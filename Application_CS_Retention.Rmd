@@ -1,0 +1,49 @@
+---
+title: 'Best Next Study: A Case of Customer Satifaction and Retention'
+
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 2
+    highlight: pygments
+    highlight_downlit: false
+---
+```{r clear_data , echo=FALSE , warning=FALSE , message = FALSE, results = "hide"}
+ rm(list=ls())
+```
+
+## Load Required Packages
+
+
+```{r load_packages , warning=FALSE , message = FALSE, }
+
+  suppressPackageStartupMessages({
+    require(devtools)  #to load the package from Github
+    require(dplyr)#for better manipulating data
+
+  })
+devtools::install_github("bestnextstudy/bestnextstudy")
+library(bestnextstudy)
+```
+
+## Load Data from `BestNextStudy` Package and Reorder Factor Levels
+```{r load_data ,  warning=FALSE , message = FALSE, }
+#customer_satisfaction_data is pre-built into the package
+data = bestnextstudy::customer_satisfaction_data
+###REORDER FACTOR LEVELS
+data$Exchange <- factor(data$Exchange, levels = c("Goods", "Services", "Mixed"))
+data$Market <- factor(data$Market, levels = c("B2C", "B2B", "Mixed"))
+data$Location <- factor(data$Location, levels = c("North America", "Europe", "Asia"))
+data$CS_Scale_Items <- factor(data$CS_Scale_Items, levels = c("Single Item", "Multiple Items"))
+data$CS_Scale_Points <- factor(data$CS_Scale_Points, levels = c("5", "7", "10"))
+```
+
+## Calculating A-Efficiency and D-Efficieny
+```{r efficiency_1 , warning=FALSE , message = FALSE, }
+variables =  c("Exchange", "Market", "Location", "CS_Scale_Items", "CS_Scale_Points", "Retention_Measure")
+labels = c("Exchange", "Market", "Location", "CS_Scale_Items", "CS_Scale_Points", "Retention_Measure")
+corrvar = "Corr"
+##RUN
+eff = bestnextstudy::efficiency(data = data, variables = variables, labels = labels, corrvar = corrvar)
+eff
+```

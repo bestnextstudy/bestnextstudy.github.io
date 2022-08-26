@@ -1,0 +1,19 @@
+{
+  "articles": [
+    {
+      "path": "Application_CS_Retention.html",
+      "title": "Best Next Study: A Case of Customer Satifaction and Retention",
+      "author": [],
+      "contents": "\r\n\r\nContents\r\nLoad Required Packages\r\nLoad Data from BestNextStudy Package and Reorder Factor Levels\r\nCalculating A-Efficiency and D-Efficieny\r\n\r\n\r\n\r\n\r\nLoad Required Packages\r\n\r\n  suppressPackageStartupMessages({\r\n    require(devtools)  #to load the package from Github\r\n    require(dplyr)#for better manipulating data\r\n\r\n  })\r\ndevtools::install_github(\"bestnextstudy/bestnextstudy\")\r\nlibrary(bestnextstudy)\r\n\r\nLoad Data from BestNextStudy Package and Reorder Factor Levels\r\n\r\n#customer_satisfaction_data is pre-built into the package\r\ndata = bestnextstudy::customer_satisfaction_data\r\n###REORDER FACTOR LEVELS\r\ndata$Exchange <- factor(data$Exchange, levels = c(\"Goods\", \"Services\", \"Mixed\"))\r\ndata$Market <- factor(data$Market, levels = c(\"B2C\", \"B2B\", \"Mixed\"))\r\ndata$Location <- factor(data$Location, levels = c(\"North America\", \"Europe\", \"Asia\"))\r\ndata$CS_Scale_Items <- factor(data$CS_Scale_Items, levels = c(\"Single Item\", \"Multiple Items\"))\r\ndata$CS_Scale_Points <- factor(data$CS_Scale_Points, levels = c(\"5\", \"7\", \"10\"))\r\n\r\nCalculating A-Efficiency and D-Efficieny\r\n\r\nvariables =  c(\"Exchange\", \"Market\", \"Location\", \"CS_Scale_Items\", \"CS_Scale_Points\", \"Retention_Measure\")\r\nlabels = c(\"Exchange\", \"Market\", \"Location\", \"CS_Scale_Items\", \"CS_Scale_Points\", \"Retention_Measure\")\r\ncorrvar = \"Corr\"\r\n##RUN\r\neff = bestnextstudy::efficiency(data = data, variables = variables, labels = labels, corrvar = corrvar)\r\neff\r\n      N a_efficiency d_efficiency\r\n[1,] 30     28.13088     53.44657\r\n\r\n\r\n\r\n",
+      "last_modified": "2022-08-26T13:46:56-04:00"
+    },
+    {
+      "path": "index.html",
+      "title": "BestNextStudy",
+      "author": [],
+      "contents": "\r\n\r\n \r\n\r\n\r\n \r\n\r\n\r\n\r\nThe R package BestNextStudy brings a friendly syntax to study\r\nhow well have extant studies collectively contributed to our understanding of the focal association being studies in a meta-analysis at a given point in time\r\nhow has our understanding of the focal association being studies in a meta-analysis evolved over time\r\nwhat should be the optimal next study to further our understanding of the focal association being studies in a meta-analysis\r\nThe application page demonstrates the use of BestNextStudy package to understand the association between Customer Satisfaction and Retention using sample data from Mittal et. al (2022).\r\nThe package is available on GitHub and can be installed to your local computer by running the following lines of code.\r\n\r\n\r\n# Installing `devtools` package if not alredy installed\r\nif(!require(devtools)){\r\n    install.packages(\"devtools\")\r\n    library(devtools)\r\n}\r\n\r\n#Installing `bestnextstudy` package\r\ndevtools::install_github(\"bestnextstudy/bestnextstudy\")\r\nlibrary(bestnextstudy)\r\n\r\n\r\n\r\n \r\n\r\n\r\n \r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+      "last_modified": "2022-08-26T13:39:46-04:00"
+    }
+  ],
+  "collections": []
+}
