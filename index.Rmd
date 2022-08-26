@@ -13,9 +13,9 @@ site: distill::distill_website
 
 The R package `BestNextStudy` brings a friendly syntax to study
 
-- how well have extant studies collectively contributed to our understanding of the focal association being studies in a meta-analysis at a given point in time
-- how has our understanding of the focal association being studies in a meta-analysis evolved over time
-- what should be the optimal next study to further our understanding of the focal association being studies in a meta-analysis
+- how well have extant studies collectively contributed to our understanding of the focal association being studied in a meta-analysis at a given point in time
+- how has our understanding of the focal association being studied in a meta-analysis evolved over time
+- what should be the optimal next study to further our understanding of the focal association being studied in a meta-analysis
 
 The [application](Application_CS_Retention.html) page demonstrates the use of `BestNextStudy` package to understand the association between Customer Satisfaction and Retention using sample data from Mittal et. al (2022).
 
