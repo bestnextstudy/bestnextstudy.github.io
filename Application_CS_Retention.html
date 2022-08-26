@@ -2423,6 +2423,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }</style>
   <!--/radix_placeholder_distill-->
   <script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+  <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+  <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2482,6 +2484,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="#load-required-packages" id="toc-load-required-packages">Load Required Packages</a></li>
 <li><a href="#load-data-from-bestnextstudy-package-and-reorder-factor-levels" id="toc-load-data-from-bestnextstudy-package-and-reorder-factor-levels">Load Data from <code>BestNextStudy</code> Package and Reorder Factor Levels</a></li>
 <li><a href="#calculating-a-efficiency-and-d-efficieny" id="toc-calculating-a-efficiency-and-d-efficieny">Calculating A-Efficiency and D-Efficieny</a></li>
+<li><a href="#calculating-true-efficiency-and-optimal-efficiency-over-time" id="toc-calculating-true-efficiency-and-optimal-efficiency-over-time">Calculating True Efficiency and Optimal Efficiency over time</a></li>
+<li><a href="#identifying-10-next-best-studies" id="toc-identifying-10-next-best-studies">Identifying 10 Next Best Studies</a></li>
 </ul>
 </nav>
 </div>
@@ -2519,6 +2523,564 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>eff</span></code></pre></div>
 <pre><code>      N a_efficiency d_efficiency
 [1,] 30     28.13088     53.44657</code></pre>
+</div>
+<h2 id="calculating-true-efficiency-and-optimal-efficiency-over-time">Calculating True Efficiency and Optimal Efficiency over time</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>naval <span class="ot">=</span> <span class="st">&quot;Don&#39;t Know&quot;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>yrvar <span class="ot">=</span> <span class="st">&quot;Year&quot;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># yrs = sort(unique(data$Year))[-c(1:3)]</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>yrs <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2005</span>, <span class="dv">2008</span>, <span class="dv">2011</span>, <span class="dv">2014</span>, <span class="dv">2017</span>, <span class="dv">2021</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="do">##RUN</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>eff_over_time <span class="ot">=</span> bestnextstudy<span class="sc">::</span><span class="fu">efficiency_over_time</span>(<span class="at">data =</span> data, <span class="at">variables =</span> variables, <span class="at">labels =</span> labels, <span class="at">corrvar =</span> corrvar, <span class="at">naval =</span> naval, <span class="at">yrvar =</span> yrvar, <span class="at">yrs =</span> yrs)</span></code></pre></div>
+</div>
+<h3 id="plotting-the-true-and-optimal-efficiencis-over-time">Plotting the true and optimal efficiencis over time</h3>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>bestnextstudy<span class="sc">::</span><span class="fu">efficiency_over_time_plot</span>(eff_over_time)</span></code></pre></div>
+<p><img src="Application_CS_Retention_files/figure-html5/efficiency_2_plot%20-1.png" width="624" /></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;eff_over_time&#39; is the output from bestnextstudy::efficiency_over_time</span></span></code></pre></div>
+</div>
+<h2 id="identifying-10-next-best-studies">Identifying 10 Next Best Studies</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>nstudies_add <span class="ot">=</span> <span class="dv">10</span> <span class="co">#number of next studies</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>eff_next_best <span class="ot">=</span> bestnextstudy<span class="sc">::</span><span class="fu">efficiency_next_best_studies</span>(<span class="at">data =</span> data, <span class="at">variables =</span> variables, <span class="at">labels =</span> labels, <span class="at">corrvar =</span> corrvar, <span class="at">naval =</span> naval, <span class="at">nstudies_add =</span> nstudies_add)</span></code></pre></div>
+</div>
+<h3 id="studies-based-on-a-efficiency-are">10 Studies Based on A-Efficiency are</h3>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>eff_next_best_A <span class="ot">=</span> <span class="fu">as.data.frame</span>(eff_next_best<span class="sc">$</span>next_best_studies_A) <span class="co">#best next studies based on a-efficiency</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">options</span>(<span class="at">knitr.kable.NA =</span> <span class="st">&#39;&#39;</span>)</span></code></pre></div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<table class=" lightable-classic table table-striped" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+(#tab:efficiency_Next_Best_A_print)10 Studies Based on A-Efficiency
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Exchange
+</th>
+<th style="text-align:left;">
+Market
+</th>
+<th style="text-align:left;">
+Location
+</th>
+<th style="text-align:left;">
+CS_Scale_Items
+</th>
+<th style="text-align:left;">
+CS_Scale_Points
+</th>
+<th style="text-align:left;">
+Retention_Measure
+</th>
+<th style="text-align:right;">
+A-efficiency
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Mixed
+</td>
+<td style="text-align:left;">
+Mixed
+</td>
+<td style="text-align:left;">
+Europe
+</td>
+<td style="text-align:left;">
+Single Item
+</td>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+Behavior
+</td>
+<td style="text-align:right;">
+37.53578
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mixed
+</td>
+<td style="text-align:left;">
+B2B
+</td>
+<td style="text-align:left;">
+Asia
+</td>
+<td style="text-align:left;">
+Multiple Items
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+Behavior
+</td>
+<td style="text-align:right;">
+44.28650
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Goods
+</td>
+<td style="text-align:left;">
+Mixed
+</td>
+<td style="text-align:left;">
+Asia
+</td>
+<td style="text-align:left;">
+Single Item
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+Intention
+</td>
+<td style="text-align:right;">
+50.66881
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Services
+</td>
+<td style="text-align:left;">
+Mixed
+</td>
+<td style="text-align:left;">
+Asia
+</td>
+<td style="text-align:left;">
+Single Item
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+Behavior
+</td>
+<td style="text-align:right;">
+55.81681
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Goods
+</td>
+<td style="text-align:left;">
+Mixed
+</td>
+<td style="text-align:left;">
+North America
+</td>
+<td style="text-align:left;">
+Multiple Items
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+Behavior
+</td>
+<td style="text-align:right;">
+59.03366
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mixed
+</td>
+<td style="text-align:left;">
+B2C
+</td>
+<td style="text-align:left;">
+Asia
+</td>
+<td style="text-align:left;">
+Single Item
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+Behavior
+</td>
+<td style="text-align:right;">
+61.92866
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Goods
+</td>
+<td style="text-align:left;">
+B2B
+</td>
+<td style="text-align:left;">
+Asia
+</td>
+<td style="text-align:left;">
+Multiple Items
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+Intention
+</td>
+<td style="text-align:right;">
+64.56624
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mixed
+</td>
+<td style="text-align:left;">
+B2B
+</td>
+<td style="text-align:left;">
+Europe
+</td>
+<td style="text-align:left;">
+Multiple Items
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+Intention
+</td>
+<td style="text-align:right;">
+67.43192
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Goods
+</td>
+<td style="text-align:left;">
+Mixed
+</td>
+<td style="text-align:left;">
+Europe
+</td>
+<td style="text-align:left;">
+Single Item
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+Intention
+</td>
+<td style="text-align:right;">
+69.80226
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Services
+</td>
+<td style="text-align:left;">
+B2B
+</td>
+<td style="text-align:left;">
+North America
+</td>
+<td style="text-align:left;">
+Multiple Items
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+Behavior
+</td>
+<td style="text-align:right;">
+72.36157
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="studies-based-on-d-efficiency-are">10 Studies Based on D-Efficiency are</h3>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<table class=" lightable-classic table table-striped" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+(#tab:efficiency_Next_Best_D_print)10 Studies Based on D-Efficiency
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Exchange
+</th>
+<th style="text-align:left;">
+Market
+</th>
+<th style="text-align:left;">
+Location
+</th>
+<th style="text-align:left;">
+CS_Scale_Items
+</th>
+<th style="text-align:left;">
+CS_Scale_Points
+</th>
+<th style="text-align:left;">
+Retention_Measure
+</th>
+<th style="text-align:right;">
+D-efficiency
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Services
+</td>
+<td style="text-align:left;">
+Mixed
+</td>
+<td style="text-align:left;">
+Europe
+</td>
+<td style="text-align:left;">
+Single Item
+</td>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+Behavior
+</td>
+<td style="text-align:right;">
+59.24098
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Services
+</td>
+<td style="text-align:left;">
+B2B
+</td>
+<td style="text-align:left;">
+Asia
+</td>
+<td style="text-align:left;">
+Multiple Items
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+Behavior
+</td>
+<td style="text-align:right;">
+63.85715
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Goods
+</td>
+<td style="text-align:left;">
+Mixed
+</td>
+<td style="text-align:left;">
+Asia
+</td>
+<td style="text-align:left;">
+Single Item
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+Intention
+</td>
+<td style="text-align:right;">
+67.99368
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mixed
+</td>
+<td style="text-align:left;">
+B2C
+</td>
+<td style="text-align:left;">
+Asia
+</td>
+<td style="text-align:left;">
+Single Item
+</td>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+Behavior
+</td>
+<td style="text-align:right;">
+70.91009
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mixed
+</td>
+<td style="text-align:left;">
+B2B
+</td>
+<td style="text-align:left;">
+Europe
+</td>
+<td style="text-align:left;">
+Multiple Items
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+Behavior
+</td>
+<td style="text-align:right;">
+73.81407
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Goods
+</td>
+<td style="text-align:left;">
+Mixed
+</td>
+<td style="text-align:left;">
+North America
+</td>
+<td style="text-align:left;">
+Multiple Items
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+Behavior
+</td>
+<td style="text-align:right;">
+75.81548
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Goods
+</td>
+<td style="text-align:left;">
+B2B
+</td>
+<td style="text-align:left;">
+Asia
+</td>
+<td style="text-align:left;">
+Multiple Items
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+Intention
+</td>
+<td style="text-align:right;">
+77.78453
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Services
+</td>
+<td style="text-align:left;">
+Mixed
+</td>
+<td style="text-align:left;">
+Europe
+</td>
+<td style="text-align:left;">
+Single Item
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+Behavior
+</td>
+<td style="text-align:right;">
+79.55252
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mixed
+</td>
+<td style="text-align:left;">
+Mixed
+</td>
+<td style="text-align:left;">
+Europe
+</td>
+<td style="text-align:left;">
+Single Item
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+Intention
+</td>
+<td style="text-align:right;">
+81.17638
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mixed
+</td>
+<td style="text-align:left;">
+Mixed
+</td>
+<td style="text-align:left;">
+Asia
+</td>
+<td style="text-align:left;">
+Multiple Items
+</td>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+Behavior
+</td>
+<td style="text-align:right;">
+82.54196
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
