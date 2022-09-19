@@ -7,7 +7,7 @@ output:
     toc_depth: 2
     highlight: pygments
     highlight_downlit: false
-    theme: readable 
+    #theme: readable 
 
 ---
 
@@ -15,6 +15,14 @@ output:
  rm(list=ls())
 ```
 
+```{recho=FALSE , warning=FALSE , message = FALSE, results = "hide"}
+library(knitr)
+knitr::opts_chunk$set(R.options = list(width = 60))
+```
+
+```{r klippy, echo=FALSE, include=TRUE}
+klippy::klippy()
+```
 
 In this page, we explore an application of the R package `BestNextStudy` to identify next best studies based on a meta analysis of relationship between Customer Satisfaction and Retention using the R package `BestNextStudy` 
 
@@ -105,6 +113,7 @@ The output shows that the A-Efficiency for the 30 studies is `28.13088` and D-Ef
 ## Change in Efficiency by Adding New Studies   
 
 Researchers working on a new study exploring the relationship between **Customer Satisfaction - Retention** can use this package to calculate the efficiency change by the addition of their new study. They can augment the design factors of their new study to the existing data and calculate the new efficiency.
+
 ```{r efficiency_New_study ,  warning=FALSE , message = FALSE, results = "hide"}
 # Create example data frame
 new_study <- data.frame(Year = 2022, # Year = Current Year
@@ -126,15 +135,22 @@ eff_new = bestnextstudy::efficiency(data = combined_data, variables = variables,
 eff_new
 ```
 
-
 ## Calculating True Efficiency and Optimal Efficiency over time
 ```{r efficiency_2 ,  warning=FALSE , message = FALSE, results = "hide"}
+
+
 naval = "Don't Know"
 yrvar = "Year"
 
 yrs = c(2005, 2008, 2011, 2014, 2017, 2021)
 ##RUN
-eff_over_time = bestnextstudy::efficiency_over_time(data = data, variables = variables, labels = labels, corrvar = corrvar, naval = naval, yrvar = yrvar, yrs = yrs)
+eff_over_time = bestnextstudy::efficiency_over_time(data = data, 
+                                                    variables = variables, 
+                                                    labels = labels, 
+                                                    corrvar = corrvar, 
+                                                    naval = naval, 
+                                                    yrvar = yrvar, 
+                                                    yrs = yrs)
 ```
 
 ### Plotting the true and optimal efficiencis over time
@@ -147,38 +163,46 @@ bestnextstudy::efficiency_over_time_plot(eff_over_time)
 
 ```{r efficiency_Next_Best , warning=FALSE , message = FALSE,results = "hide"}
 nstudies_add = 10 #number of next studies
-eff_next_best = bestnextstudy::efficiency_next_best_studies(data = data, variables = variables, labels = labels, corrvar = corrvar, naval = naval, nstudies_add = nstudies_add)
+eff_next_best = bestnextstudy::efficiency_next_best_studies(data = data, 
+                                                            variables = variables, 
+                                                            labels = labels, 
+                                                            corrvar = corrvar, 
+                                                            naval = naval, 
+                                                            nstudies_add = nstudies_add)
 ```
 
 ### 10 Studies Based on A-Efficiency are
 ```{r efficiency_Next_Best_A,  warning=FALSE , message = FALSE}
 eff_next_best_A = as.data.frame(eff_next_best$next_best_studies_A) #best next studies based on a-efficiency
- options(knitr.kable.NA = '')
+
  
 ```
 
 ```{r efficiency_Next_Best_A_print, echo= FALSE,  warning=FALSE , message = FALSE}
+#options(knitr.kable.NA = '')
 require(kableExtra)
- 
+ library(dplyr)
+library(kableExtra)
 eff_next_best_A %>%
-  kbl(caption = "10 Studies Based on A-Efficiency") %>%
+  kbl(caption = NULL) %>%
   kable_classic(full_width = F, html_font = "Cambria") %>%
   kable_styling(bootstrap_options = "striped", full_width = F, position = "center")
 ```
 
 
 ### 10 Studies Based on D-Efficiency are
-```{r efficiency_Next_Best_D, echo=FALSE , warning=FALSE , message = FALSE}
-library(dplyr)
-library(kableExtra)
+```{r efficiency_Next_Best_D, warning=FALSE , message = FALSE}
+
 eff_next_best_D = as.data.frame(eff_next_best$next_best_studies_D) #best next studies based on a-efficiency
- options(knitr.kable.NA = '')
+
 ```
 
 ```{r efficiency_Next_Best_D_print, echo= FALSE , warning=FALSE , message = FALSE}
-require(kableExtra)
+#options(knitr.kable.NA = '')
+
 eff_next_best_D %>%
-  kbl(caption = "10 Studies Based on D-Efficiency") %>%
+  kbl(caption = NULL) %>%
   kable_classic(full_width = F, html_font = "Cambria") %>%
   kable_styling(bootstrap_options = "striped", full_width = F, position = "center")
 ```
+

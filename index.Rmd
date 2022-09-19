@@ -2,7 +2,8 @@
 title:  "BestNextStudy"
 
 pagetitle: "BestNextStudy"
-site: distill::distill_website
+output: distill::distill_article
+#site: distill::distill_website
 ---
 <p>&nbsp;</p> 
 <p>&nbsp;</p> 
@@ -21,7 +22,16 @@ The [application](Application_CS_Retention.html) page demonstrates the use of `B
 
 The package is available on [GitHub](https://github.com/bestnextstudy/bestnextstudy){target="_blank"}  and can be installed to your local computer by running the following lines of code.
 
-```{r load_packages , warning=FALSE , message = FALSE, }
+```{r echo=FALSE, include=TRUE}
+library(knitr)
+opts_chunk$set(tidy.opts=list(width.cutoff=60),tidy=TRUE)
+```
+
+```{r klippy, echo=FALSE, include=TRUE}
+klippy::klippy()
+```
+
+```{r load_packages , warning=FALSE , message = FALSE, class.source='klippy'}
 
 # Installing `devtools` package if not alredy installed
 if(!require(devtools)){

@@ -1,4 +1,0 @@
-"0","nstudies_add = 10 #number of next studies"
-"0","eff_next_best = bestnextstudy::efficiency_next_best_studies(data = data, variables = variables, labels = labels, corrvar = corrvar, naval = naval, nstudies_add = nstudies_add)"
-"2","Error in `[.tbl_df`(data, variables) : object 'variables' not found
-"
