@@ -2485,6 +2485,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="#load-data-from-bestnextstudy-package-and-reorder-factor-levels" id="toc-load-data-from-bestnextstudy-package-and-reorder-factor-levels">Load Data from <code>BestNextStudy</code> Package and Reorder Factor Levels</a></li>
 <li><a href="#data-description" id="toc-data-description">Data Description</a></li>
 <li><a href="#calculating-a-efficiency-and-d-efficiency" id="toc-calculating-a-efficiency-and-d-efficiency">Calculating A-Efficiency and D-Efficiency</a></li>
+<li><a href="#change-in-efficiency-by-adding-new-studies" id="toc-change-in-efficiency-by-adding-new-studies">Change in Efficiency by Adding New Studies</a></li>
 <li><a href="#calculating-true-efficiency-and-optimal-efficiency-over-time" id="toc-calculating-true-efficiency-and-optimal-efficiency-over-time">Calculating True Efficiency and Optimal Efficiency over time</a></li>
 <li><a href="#identifying-10-next-best-studies" id="toc-identifying-10-next-best-studies">Identifying 10 Next Best Studies</a></li>
 </ul>
@@ -2493,7 +2494,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
-<p>In this page, we explore an application of methodology from Han et al. (2022) to identify next best studies based on a meta analysis of relationship between Customer Satisfaction and Retention using the R package <code>BestNextStudy</code></p>
+<p>In this page, we explore an application of the R package <code>BestNextStudy</code> to identify next best studies based on a meta analysis of relationship between Customer Satisfaction and Retention using the R package <code>BestNextStudy</code></p>
 <p>For this example, we use the Customer Satisfaction Dataset (<code>customer_satisfaction_data</code>) included in the R package.</p>
 <h2 id="load-required-packages">Load Required Packages</h2>
 <p>We begin by installing the package and loading the library.</p>
@@ -2502,11 +2503,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">require</span>(devtools)  <span class="co">#to load the package from Github</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">require</span>(dplyr)<span class="co">#for better manipulating data</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">require</span>(Hmisc)<span class="co">#for data description</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">require</span>(plyr)</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;bestnextstudy/bestnextstudy&quot;</span>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bestnextstudy)</span></code></pre></div>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;bestnextstudy/bestnextstudy&quot;</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bestnextstudy)</span></code></pre></div>
 </div>
 <h2 id="load-data-from-bestnextstudy-package-and-reorder-factor-levels">Load Data from <code>BestNextStudy</code> Package and Reorder Factor Levels</h2>
 <p>In this section we load the data from the package and reorder factor levels. To replicate the same analysis on a different dataset, you can load the specific data as a csv or excel file into R.</p>
@@ -2639,30 +2641,52 @@ highest: 0.7598 0.7700 0.7800 0.8000 0.8200
 [1,] 30     28.13088     53.44657</code></pre>
 </div>
 <p>The output shows that the A-Efficiency for the 30 studies is <code>28.13088</code> and D-Efficiency is <code>53.44657</code>.</p>
+<h2 id="change-in-efficiency-by-adding-new-studies">Change in Efficiency by Adding New Studies</h2>
+Researchers working on a new study exploring the relationship between <strong>Customer Satisfaction - Retention</strong> can use this package to calculate the efficiency change by the addition of their new study. They can augment the design factors of their new study to the existing data and calculate the new efficiency.
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create example data frame</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>new_study <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Year =</span> <span class="dv">2022</span>, <span class="co"># Year = Current Year</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Exchange =</span> <span class="st">&quot;Mixed&quot;</span>, </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Market =</span> <span class="st">&quot;B2B&quot;</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Location =</span> <span class="st">&quot;Europe&quot;</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">CS_Scale_Items =</span> <span class="st">&quot;Single Item&quot;</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">CS_Scale_Points =</span> <span class="st">&quot;10&quot;</span>,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Retention_Measure =</span> <span class="st">&quot;Behavior&quot;</span>,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Corr =</span> <span class="dv">0</span>) <span class="co">#Correlation between CS and Retention in the new study assumed to be zero hypothetically</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Combining data from old studies with the new hypothetical study</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>combined_data <span class="ot">&lt;-</span> <span class="fu">rbind.fill</span>(data,new_study)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculating the New Efficiency</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>eff_new <span class="ot">=</span> bestnextstudy<span class="sc">::</span><span class="fu">efficiency</span>(<span class="at">data =</span> combined_data, <span class="at">variables =</span> variables, <span class="at">labels =</span> labels, <span class="at">corrvar =</span> corrvar)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co">#Display the New Efficiency</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>eff_new</span></code></pre></div>
+</div>
 <h2 id="calculating-true-efficiency-and-optimal-efficiency-over-time">Calculating True Efficiency and Optimal Efficiency over time</h2>
 <div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>naval <span class="ot">=</span> <span class="st">&quot;Don&#39;t Know&quot;</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>yrvar <span class="ot">=</span> <span class="st">&quot;Year&quot;</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># yrs = sort(unique(data$Year))[-c(1:3)]</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>yrs <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2005</span>, <span class="dv">2008</span>, <span class="dv">2011</span>, <span class="dv">2014</span>, <span class="dv">2017</span>, <span class="dv">2021</span>)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="do">##RUN</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>eff_over_time <span class="ot">=</span> bestnextstudy<span class="sc">::</span><span class="fu">efficiency_over_time</span>(<span class="at">data =</span> data, <span class="at">variables =</span> variables, <span class="at">labels =</span> labels, <span class="at">corrvar =</span> corrvar, <span class="at">naval =</span> naval, <span class="at">yrvar =</span> yrvar, <span class="at">yrs =</span> yrs)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>naval <span class="ot">=</span> <span class="st">&quot;Don&#39;t Know&quot;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>yrvar <span class="ot">=</span> <span class="st">&quot;Year&quot;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>yrs <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2005</span>, <span class="dv">2008</span>, <span class="dv">2011</span>, <span class="dv">2014</span>, <span class="dv">2017</span>, <span class="dv">2021</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="do">##RUN</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>eff_over_time <span class="ot">=</span> bestnextstudy<span class="sc">::</span><span class="fu">efficiency_over_time</span>(<span class="at">data =</span> data, <span class="at">variables =</span> variables, <span class="at">labels =</span> labels, <span class="at">corrvar =</span> corrvar, <span class="at">naval =</span> naval, <span class="at">yrvar =</span> yrvar, <span class="at">yrs =</span> yrs)</span></code></pre></div>
 </div>
 <h3 id="plotting-the-true-and-optimal-efficiencis-over-time">Plotting the true and optimal efficiencis over time</h3>
 <div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>bestnextstudy<span class="sc">::</span><span class="fu">efficiency_over_time_plot</span>(eff_over_time)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>bestnextstudy<span class="sc">::</span><span class="fu">efficiency_over_time_plot</span>(eff_over_time)</span></code></pre></div>
 <p><img src="Application_CS_Retention_files/figure-html5/efficiency_2_plot%20-1.png" width="624" /></p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;eff_over_time&#39; is the output from bestnextstudy::efficiency_over_time</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;eff_over_time&#39; is the output from bestnextstudy::efficiency_over_time</span></span></code></pre></div>
 </div>
 <h2 id="identifying-10-next-best-studies">Identifying 10 Next Best Studies</h2>
 <div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>nstudies_add <span class="ot">=</span> <span class="dv">10</span> <span class="co">#number of next studies</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>eff_next_best <span class="ot">=</span> bestnextstudy<span class="sc">::</span><span class="fu">efficiency_next_best_studies</span>(<span class="at">data =</span> data, <span class="at">variables =</span> variables, <span class="at">labels =</span> labels, <span class="at">corrvar =</span> corrvar, <span class="at">naval =</span> naval, <span class="at">nstudies_add =</span> nstudies_add)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>nstudies_add <span class="ot">=</span> <span class="dv">10</span> <span class="co">#number of next studies</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>eff_next_best <span class="ot">=</span> bestnextstudy<span class="sc">::</span><span class="fu">efficiency_next_best_studies</span>(<span class="at">data =</span> data, <span class="at">variables =</span> variables, <span class="at">labels =</span> labels, <span class="at">corrvar =</span> corrvar, <span class="at">naval =</span> naval, <span class="at">nstudies_add =</span> nstudies_add)</span></code></pre></div>
 </div>
 <h3 id="studies-based-on-a-efficiency-are">10 Studies Based on A-Efficiency are</h3>
 <div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>eff_next_best_A <span class="ot">=</span> <span class="fu">as.data.frame</span>(eff_next_best<span class="sc">$</span>next_best_studies_A) <span class="co">#best next studies based on a-efficiency</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">options</span>(<span class="at">knitr.kable.NA =</span> <span class="st">&#39;&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>eff_next_best_A <span class="ot">=</span> <span class="fu">as.data.frame</span>(eff_next_best<span class="sc">$</span>next_best_studies_A) <span class="co">#best next studies based on a-efficiency</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">options</span>(<span class="at">knitr.kable.NA =</span> <span class="st">&#39;&#39;</span>)</span></code></pre></div>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <table class=" lightable-classic table table-striped" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; width: auto !important; margin-left: auto; margin-right: auto;">

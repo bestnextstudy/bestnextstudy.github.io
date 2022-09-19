@@ -16,7 +16,7 @@ output:
 ```
 
 
-In this page, we explore an application of methodology from Han et al. (2022) to identify next best studies based on a meta analysis of relationship between Customer Satisfaction and Retention using the R package `BestNextStudy` 
+In this page, we explore an application of the R package `BestNextStudy` to identify next best studies based on a meta analysis of relationship between Customer Satisfaction and Retention using the R package `BestNextStudy` 
 
 For this example, we use the Customer Satisfaction Dataset (`customer_satisfaction_data`) included in the R package.
 
@@ -32,6 +32,7 @@ We begin by installing the package and loading the library.
     require(devtools)  #to load the package from Github
     require(dplyr)#for better manipulating data
     require(Hmisc)#for data description
+    require(plyr)
 
 
   })
@@ -101,12 +102,36 @@ eff
 
 The output shows that the A-Efficiency for the 30 studies is `28.13088` and D-Efficiency is `53.44657`.
 
+## Change in Efficiency by Adding New Studies   
+
+Researchers working on a new study exploring the relationship between **Customer Satisfaction - Retention** can use this package to calculate the efficiency change by the addition of their new study. They can augment the design factors of their new study to the existing data and calculate the new efficiency.
+```{r efficiency_New_study ,  warning=FALSE , message = FALSE, results = "hide"}
+# Create example data frame
+new_study <- data.frame(Year = 2022, # Year = Current Year
+                  Exchange = "Mixed", 
+                  Market = "B2B",
+                  Location = "Europe",
+                  CS_Scale_Items = "Single Item",
+                  CS_Scale_Points = "10",
+                  Retention_Measure = "Behavior",
+                  Corr = 0) #Correlation between CS and Retention in the new study assumed to be zero hypothetically
+
+# Combining data from old studies with the new hypothetical study
+combined_data <- rbind.fill(data,new_study)
+
+# Calculating the New Efficiency
+eff_new = bestnextstudy::efficiency(data = combined_data, variables = variables, labels = labels, corrvar = corrvar)
+
+#Display the New Efficiency
+eff_new
+```
+
 
 ## Calculating True Efficiency and Optimal Efficiency over time
 ```{r efficiency_2 ,  warning=FALSE , message = FALSE, results = "hide"}
 naval = "Don't Know"
 yrvar = "Year"
-# yrs = sort(unique(data$Year))[-c(1:3)]
+
 yrs = c(2005, 2008, 2011, 2014, 2017, 2021)
 ##RUN
 eff_over_time = bestnextstudy::efficiency_over_time(data = data, variables = variables, labels = labels, corrvar = corrvar, naval = naval, yrvar = yrvar, yrs = yrs)

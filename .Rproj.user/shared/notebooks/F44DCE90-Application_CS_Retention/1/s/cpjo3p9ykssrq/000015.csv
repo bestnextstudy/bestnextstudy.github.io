@@ -1,0 +1,14 @@
+"0","# Names of the variables to be included as moderators while calculating the efficiency"
+"0","variables =  c(""Exchange"", ""Market"", ""Location"", ""CS_Scale_Items"", ""CS_Scale_Points"", ""Retention_Measure"")"
+"0",""
+"0","# Labels corresponding to the variables included"
+"0","labels = c(""Exchange"", ""Market"", ""Location"", ""CS_Scale_Items"", ""CS_Scale_Points"", ""Retention_Measure"")"
+"0",""
+"0","# Identifying the variable which represents the Correlation "
+"0","corrvar = ""Corr"""
+"0",""
+"0","# Calculating the Efficiency"
+"0","eff = bestnextstudy::efficiency(data = data, variables = variables, labels = labels, corrvar = corrvar)"
+"2","Error in bestnextstudy::efficiency(data = data, variables = variables,  : 
+  lazy-load database 'D:/Users/muzee/Documents/R/win-library/4.0/matrixcalc/R/matrixcalc.rdb' is corrupt
+"

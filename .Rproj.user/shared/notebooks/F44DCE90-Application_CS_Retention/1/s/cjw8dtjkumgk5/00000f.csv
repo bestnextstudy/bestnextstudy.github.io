@@ -1,0 +1,4 @@
+"0","require(kableExtra)"
+"0"," "
+"0","eff_next_best_A %>%"
+"0","  kable_classic(full_width = F, html_font = ""Cambria"") %>%"
