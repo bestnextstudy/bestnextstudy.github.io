@@ -3,7 +3,7 @@
     "path": "D:/Dropbox/Research/Meta Efficiency Paper/Website and code stuff/bestnextstudy.github.io/Application_CS_Retention.Rmd",
     "project_path": "Application_CS_Retention.Rmd",
     "type": "r_markdown",
-    "hash": "0",
+    "hash": "3535674790",
     "contents": "",
     "dirty": false,
     "created": 1663601273005.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "9,19",
-        "scrollLine": "1"
+        "cursorPosition": "158,72",
+        "scrollLine": "155"
     },
     "folds": "",
-    "lastKnownWriteTime": 1663608117,
+    "lastKnownWriteTime": 1663617050,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1663608117070,
+    "last_content_update": 1663617104419,
     "read_only": false,
     "read_only_alternatives": []
 }

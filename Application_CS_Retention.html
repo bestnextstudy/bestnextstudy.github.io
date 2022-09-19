@@ -2697,23 +2697,23 @@ highest: 0.7598 0.7700 0.7800 0.8000 0.8200
 </div>
 <h3 id="plotting-the-true-and-optimal-efficiencis-over-time">Plotting the true and optimal efficiencis over time</h3>
 <div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>bestnextstudy<span class="sc">::</span><span class="fu">efficiency_over_time_plot</span>(eff_over_time)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;eff_over_time&#39; is the output from bestnextstudy::efficiency_over_time</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>bestnextstudy<span class="sc">::</span><span class="fu">efficiency_over_time_plot</span>(eff_over_time)</span></code></pre></div>
 <p><img src="Application_CS_Retention_files/figure-html5/efficiency_2_plot%20-1.png" width="624" /></p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;eff_over_time&#39; is the output from bestnextstudy::efficiency_over_time</span></span></code></pre></div>
 </div>
 <h2 id="identifying-10-next-best-studies">Identifying 10 Next Best Studies</h2>
 <div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>nstudies_add <span class="ot">=</span> <span class="dv">10</span> <span class="co">#number of next studies</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>eff_next_best <span class="ot">=</span> bestnextstudy<span class="sc">::</span><span class="fu">efficiency_next_best_studies</span>(<span class="at">data =</span> data, </span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                                                            <span class="at">variables =</span> variables, </span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                                                            <span class="at">labels =</span> labels, </span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                                                            <span class="at">corrvar =</span> corrvar, </span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>                                                            <span class="at">naval =</span> naval, </span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>                                                            <span class="at">nstudies_add =</span> nstudies_add)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>nstudies_add <span class="ot">=</span> <span class="dv">10</span> <span class="co">#number of next studies</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>eff_next_best <span class="ot">=</span> bestnextstudy<span class="sc">::</span><span class="fu">efficiency_next_best_studies</span>(<span class="at">data =</span> data, </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                                                            <span class="at">variables =</span> variables, </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>                                                            <span class="at">labels =</span> labels, </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>                                                            <span class="at">corrvar =</span> corrvar, </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>                                                            <span class="at">naval =</span> naval, </span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>                                                            <span class="at">nstudies_add =</span> nstudies_add)</span></code></pre></div>
 </div>
 <h3 id="studies-based-on-a-efficiency-are">10 Studies Based on A-Efficiency are</h3>
 <div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>eff_next_best_A <span class="ot">=</span> <span class="fu">as.data.frame</span>(eff_next_best<span class="sc">$</span>next_best_studies_A) <span class="co">#best next studies based on a-efficiency</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>eff_next_best_A <span class="ot">=</span> <span class="fu">as.data.frame</span>(eff_next_best<span class="sc">$</span>next_best_studies_A) <span class="co">#best next studies based on a-efficiency</span></span></code></pre></div>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <table class=" lightable-classic table table-striped" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; width: auto !important; margin-left: auto; margin-right: auto;">
@@ -3011,7 +3011,7 @@ Behavior
 </div>
 <h3 id="studies-based-on-d-efficiency-are">10 Studies Based on D-Efficiency are</h3>
 <div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>eff_next_best_D <span class="ot">=</span> <span class="fu">as.data.frame</span>(eff_next_best<span class="sc">$</span>next_best_studies_D) <span class="co">#best next studies based on a-efficiency</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>eff_next_best_D <span class="ot">=</span> <span class="fu">as.data.frame</span>(eff_next_best<span class="sc">$</span>next_best_studies_D) <span class="co">#best next studies based on a-efficiency</span></span></code></pre></div>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <table class=" lightable-classic table table-striped" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; width: auto !important; margin-left: auto; margin-right: auto;">

@@ -156,8 +156,9 @@ eff_over_time = bestnextstudy::efficiency_over_time(data = data,
 
 ### Plotting the true and optimal efficiencis over time
 ```{r efficiency_2_plot ,  warning=FALSE , message = FALSE}
-bestnextstudy::efficiency_over_time_plot(eff_over_time)
 # 'eff_over_time' is the output from bestnextstudy::efficiency_over_time
+bestnextstudy::efficiency_over_time_plot(eff_over_time)
+
 ```
 
 ## Identifying 10 Next Best Studies
