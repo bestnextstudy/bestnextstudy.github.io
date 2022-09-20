@@ -115,7 +115,7 @@ The output shows that the A-Efficiency for the 30 studies is `28.13088` and D-Ef
 
 Researchers working on a new study exploring the relationship between **Customer Satisfaction - Retention** can use this package to calculate the efficiency change by the addition of their new study. They can augment the design factors of their new study to the existing data and calculate the new efficiency.
 
-```{r efficiency_New_study ,  warning=FALSE , message = FALSE, results = "hide"}
+```{r efficiency_New_study ,  warning=FALSE , message = FALSE}
 # Create example data frame
 new_study <- data.frame(Year = 2022, # Year = Current Year
                   Exchange = "Mixed", 
