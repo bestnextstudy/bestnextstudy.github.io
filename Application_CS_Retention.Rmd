@@ -136,7 +136,7 @@ eff_new = bestnextstudy::efficiency(data = combined_data, variables = variables,
 eff_new
 ```
 
-## Calculating True Efficiency and Optimal Efficiency over time
+## Calculating True Efficiency and Optimal Efficiency Over Time
 ```{r efficiency_2 ,  warning=FALSE , message = FALSE, results = "hide"}
 
 

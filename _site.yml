@@ -12,6 +12,8 @@ navbar:
       href: index.html
     - text: "Application"
       href: Application_CS_Retention.html
+    - text: "Online Apps"
+      href: Web_Application.html
 
 output: distill::distill_article
 #theme: flatly
