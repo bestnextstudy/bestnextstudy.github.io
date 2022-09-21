@@ -3,7 +3,7 @@
     "path": "D:/Dropbox/Research/Meta Efficiency Paper/Website and code stuff/bestnextstudy.github.io/Web_Application.Rmd",
     "project_path": "Web_Application.Rmd",
     "type": "r_markdown",
-    "hash": "0",
+    "hash": "1346615570",
     "contents": "",
     "dirty": false,
     "created": 1663729039337.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "29,2",
-        "scrollLine": "13"
+        "cursorPosition": "30,117",
+        "scrollLine": "15"
     },
     "folds": "",
-    "lastKnownWriteTime": 1663771601,
+    "lastKnownWriteTime": 1663771885,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1663771601677,
+    "last_content_update": 1663771885571,
     "read_only": false,
     "read_only_alternatives": []
 }
