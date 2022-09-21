@@ -28,4 +28,4 @@ The data should have the following characteristics
 
 You need to identify the names of the `year` and `correlation` variables in your data in the web application below.
   
-<iframe src="https://bestnextstudy.shinyapps.io/BestNextStudy_Shiny_Eff_Cal/" class="l-screen-inset shaded" height="1000px"></iframe>
+<iframe src="https://bestnextstudy.shinyapps.io/BestNextStudy_Shiny_Eff_Cal/" class="l-screen-inset shaded" height="300px"  width="100%"  frameborder="no" ></iframe>
