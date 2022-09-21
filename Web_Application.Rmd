@@ -20,11 +20,12 @@ To make it easier to implement this methodology, we developed a web application 
 You can upload your data in the web application below and calculate the A-efficiency and D-Efficieny.
 
 The data should have the following characteristics
-- be a `.csv` file
-- have a column specifying the year of the studies
-- have a column specifying the correlation of the association being studied
-- all other columns in the data should be the study design factors
 
-You need to identify the names of the `year` and `correlation` variables in your data in the web application.
+   - be a `.csv` file
+   - have a column specifying the year of the studies
+   - have a column specifying the correlation of the association being studied
+   - all other columns in the data should be the study design factors
+
+You need to identify the names of the `year` and `correlation` variables in your data in the web application below.
   
 <iframe src="https://bestnextstudy.shinyapps.io/BestNextStudy_Shiny_Eff_Cal/" class="l-screen-inset shaded" height="1000px"></iframe>
