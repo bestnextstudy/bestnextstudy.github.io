@@ -30,15 +30,15 @@ You need to identify the names of the `year` and `correlation` variables in your
 
 You can check the desired data structure and also test the functionality of the application using sample data available to download [here](data/Efficiency_Best_Next_Studies_Sample_Data_081522.csv){target="_blank"}.
   
-<iframe src="https://bestnextstudy.shinyapps.io/BestNextStudy_Shiny_Eff_Cal/" class="l-screen-inset shaded" height="500px"  width="100%"  frameborder="no" ></iframe>
+<iframe src="https://bestnextstudy.shinyapps.io/BestNextStudy_Shiny_Eff_Cal/" class="l-screen-inset shaded" height="500px"  width="80%"  frameborder="no" ></iframe>
 
 
-## Identifying the Next Best Studies to Conduct
+## Identifying the Next Best Studies 
 
 You can upload your data and the number of next studies you want to calculate in the web application below and get the design characteristics of the studies and corresponding A- and D-efficiency by sequentially adding these studies.
 
 The data structure should be same as to the structure discussed in the earlier section and the input for the number of future studies should range between 1 and 15. Given the computational complexity of this analysis, the code will take some time to compile.
 
-<iframe src="https://bestnextstudy.shinyapps.io/Next_Best_Study_Calculation/" class="l-screen-inset shaded" height="500px"  width="100%"  frameborder="no" ></iframe>
+<iframe src="https://bestnextstudy.shinyapps.io/Next_Best_Study_Calculation/" class="l-screen-inset shaded" height="800px"  width="80%"  frameborder="no" ></iframe>
 
 
