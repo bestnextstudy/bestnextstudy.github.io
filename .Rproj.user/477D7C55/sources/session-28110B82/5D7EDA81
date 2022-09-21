@@ -1,26 +1,26 @@
 {
-    "id": "D8D21FA6",
+    "id": "5D7EDA81",
     "path": "D:/Dropbox/Research/Meta Efficiency Paper/Website and code stuff/bestnextstudy.github.io/Application_CS_Retention.Rmd",
     "project_path": "Application_CS_Retention.Rmd",
     "type": "r_markdown",
     "hash": "0",
     "contents": "",
     "dirty": false,
-    "created": 1663601273005.0,
+    "created": 1663783793758.0,
     "source_on_save": false,
-    "relative_order": 2,
+    "relative_order": 1,
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "137,0",
-        "scrollLine": "0"
+        "cursorPosition": "142,0",
+        "scrollLine": "137"
     },
     "folds": "",
     "lastKnownWriteTime": 1663770259,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1663770259104,
+    "last_content_update": 1663770259,
     "read_only": false,
     "read_only_alternatives": []
 }
