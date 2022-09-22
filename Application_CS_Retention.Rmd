@@ -137,6 +137,10 @@ eff_new
 ```
 
 ## Calculating True Efficiency and Optimal Efficiency Over Time
+
+
+The following graph shows the efficiency of studies examining the association between CS and retention over time. Specifically,the A-efficiency of all the studies till 2005 is 33.33 and the D-efficiency is 60.63. Additional studies got added to the literature between 2005 and 2008 changing the cumulative A-efficiency and D-efficiency of studies till 2008 to 8.41 and 40.74 respectively. However, if the studies between 2005 and 2008 were added sequentially using the `BestNextStudies` approach with design efficiency as the guiding principle, the A-efficiency would have gone up from 33.33 in 2005 to 92.89 in 2008 and the D-efficiency would have gone up from 60.63 in 2005 to 96.69 in 2008. We call the new hypothetical efficiency as the optimal efficiency.
+
 ```{r efficiency_2 ,  warning=FALSE , message = FALSE, results = "hide"}
 
 

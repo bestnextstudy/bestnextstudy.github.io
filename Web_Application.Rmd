@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
 To make it easier to implement this methodology, we developed a web application which uses the `BestNextStudy` package and gives you the desired output at the click of a button. You can upload your meta-analysis data and calculate the efficiencies, compare new study designs and come up with a set of next best studies based on A-efficiency and D-efficiency.
 
 
-## Calculate the A-Efficiency and D-Efficiency
+## Calculating the Design Efficiency (A-Efficiency and D-Efficiency)
 
 You can upload your data in the web application below and calculate the A-efficiency and D-efficiency.
 
@@ -29,16 +29,40 @@ The data should have the following characteristics
 You need to identify the names of the `year` and `correlation` variables in your data in the web application below.
 
 You can check the desired data structure and also test the functionality of the application using sample data available to download [here](data/Efficiency_Best_Next_Studies_Sample_Data_081522.csv){target="_blank"}.
-  
+
+### Web Application
+
 <iframe src="https://bestnextstudy.shinyapps.io/BestNextStudy_Shiny_Eff_Cal/" class="l-screen-inset shaded" height="500px"  width="80%"  frameborder="no" ></iframe>
 
 
-## Identifying the Next Best Studies 
+## Identifying the Next Best Studies Based on Design Efficiency
 
 You can upload your data and the number of next studies you want to calculate in the web application below and get the design characteristics of the studies and corresponding A- and D-efficiency by sequentially adding these studies.
 
-The data structure should be same as to the structure discussed in the earlier section and the input for the number of future studies should range between 1 and 15. Given the computational complexity of this analysis, the code will take some time to compile.
+The data structure should be same as to the structure discussed in the earlier section and the input for the number of future studies should range between 1 and 15.
+
+***Note***
+   - Given the computational complexity of this analysis, the code will take some time to compile.
+   
+### Web Application
 
 <iframe src="https://bestnextstudy.shinyapps.io/Next_Best_Study_Calculation/" class="l-screen-inset shaded" height="800px"  width="80%"  frameborder="no" ></iframe>
 
 
+
+## Change in Design Efficiency Over Time
+
+This methodology provides an opportunity to take a look back at the literature and understand how it evolved over time. We group the studies at different time intervals and calculate the A-efficiency and D-efficiency. We can also calculate the optimal efficiencies which are the  efficiencies if we developed the studies following the `BestNextStudy` approach.
+
+
+You can upload your data and the multiple years you want to group the studies at in the web application below and get the true and optimal A- and D-efficiencies. The program also outputs a graph plotting these efficiencies.
+
+The data structure should be same as to the structure discussed in the earlier section and the input for the year should range between the minimum and maximum year value in your data. 
+
+***Note***
+   - Select the years in an ascending order.
+   - Given the computational complexity of this analysis, the code will take some time to compile.
+  
+### Web Application
+
+<iframe src="http://bestnextstudy.shinyapps.io/Over_Time_Analysis/" class="l-screen-inset shaded" height="800px"  width="80%"  frameborder="no" ></iframe>

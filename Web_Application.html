@@ -2478,7 +2478,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 <div class="d-article">
 <p>To make it easier to implement this methodology, we developed a web application which uses the <code>BestNextStudy</code> package and gives you the desired output at the click of a button. You can upload your meta-analysis data and calculate the efficiencies, compare new study designs and come up with a set of next best studies based on A-efficiency and D-efficiency.</p>
-<h2 id="calculate-the-a-efficiency-and-d-efficiency">Calculate the A-Efficiency and D-Efficiency</h2>
+<h2 id="calculating-the-design-efficiency-a-efficiency-and-d-efficiency">Calculating the Design Efficiency (A-Efficiency and D-Efficiency)</h2>
 <p>You can upload your data in the web application below and calculate the A-efficiency and D-efficiency.</p>
 <p>The data should have the following characteristics</p>
 <ul>
@@ -2489,12 +2489,26 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </ul>
 <p>You need to identify the names of the <code>year</code> and <code>correlation</code> variables in your data in the web application below.</p>
 <p>You can check the desired data structure and also test the functionality of the application using sample data available to download <a href="data/Efficiency_Best_Next_Studies_Sample_Data_081522.csv" target="_blank">here</a>.</p>
+<h3 id="web-application">Web Application</h3>
 <iframe src="https://bestnextstudy.shinyapps.io/BestNextStudy_Shiny_Eff_Cal/" class="l-screen-inset shaded" height="500px" width="80%" frameborder="no">
 </iframe>
-<h2 id="identifying-the-next-best-studies">Identifying the Next Best Studies</h2>
+<h2 id="identifying-the-next-best-studies-based-on-design-efficiency">Identifying the Next Best Studies Based on Design Efficiency</h2>
 <p>You can upload your data and the number of next studies you want to calculate in the web application below and get the design characteristics of the studies and corresponding A- and D-efficiency by sequentially adding these studies.</p>
-<p>The data structure should be same as to the structure discussed in the earlier section and the input for the number of future studies should range between 1 and 15. Given the computational complexity of this analysis, the code will take some time to compile.</p>
+<p>The data structure should be same as to the structure discussed in the earlier section and the input for the number of future studies should range between 1 and 15.</p>
+<p><strong><em>Note</em></strong>
+- Given the computational complexity of this analysis, the code will take some time to compile.</p>
+<h3 id="web-application-1">Web Application</h3>
 <iframe src="https://bestnextstudy.shinyapps.io/Next_Best_Study_Calculation/" class="l-screen-inset shaded" height="800px" width="80%" frameborder="no">
+</iframe>
+<h2 id="change-in-design-efficiency-over-time">Change in Design Efficiency Over Time</h2>
+<p>This methodology provides an opportunity to take a look back at the literature and understand how it evolved over time. We group the studies at different time intervals and calculate the A-efficiency and D-efficiency. We can also calculate the optimal efficiencies which are the efficiencies if we developed the studies following the <code>BestNextStudy</code> approach.</p>
+<p>You can upload your data and the multiple years you want to group the studies at in the web application below and get the true and optimal A- and D-efficiencies. The program also outputs a graph plotting these efficiencies.</p>
+<p>The data structure should be same as to the structure discussed in the earlier section and the input for the year should range between the minimum and maximum year value in your data.</p>
+<p><strong><em>Note</em></strong>
+- Select the years in an ascending order.
+- Given the computational complexity of this analysis, the code will take some time to compile.</p>
+<h3 id="web-application-2">Web Application</h3>
+<iframe src="http://bestnextstudy.shinyapps.io/Over_Time_Analysis/" class="l-screen-inset shaded" height="800px" width="80%" frameborder="no">
 </iframe>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
