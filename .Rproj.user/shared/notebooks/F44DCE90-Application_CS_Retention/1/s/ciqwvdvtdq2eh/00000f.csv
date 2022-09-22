@@ -1,7 +1,6 @@
 "0","#customer_satisfaction_data is pre-built into the package"
 "0","data = bestnextstudy::customer_satisfaction_data"
 "0","###REORDER FACTOR LEVELS"
-"0","data$Exchange <- factor(data$Exchange, levels = c(""Goods"", ""Services"", ""Mixed""))"
 "0","data$Market <- factor(data$Market, levels = c(""B2C"", ""B2B"", ""Mixed""))"
 "0","data$Location <- factor(data$Location, levels = c(""North America"", ""Europe"", ""Asia""))"
 "0","data$CS_Scale_Items <- factor(data$CS_Scale_Items, levels = c(""Single Item"", ""Multiple Items""))"

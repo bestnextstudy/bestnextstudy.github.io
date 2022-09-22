@@ -143,7 +143,9 @@ eff_new
 naval = "Don't Know"
 yrvar = "Year"
 
-yrs = c(2005, 2008, 2011, 2014, 2017, 2021)
+yrs = c(2005, 2008, 2011, 2014, 2017, 2019)
+
+
 ##RUN
 eff_over_time = bestnextstudy::efficiency_over_time(data = data, 
                                                     variables = variables, 
