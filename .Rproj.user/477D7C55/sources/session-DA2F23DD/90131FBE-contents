@@ -39,7 +39,7 @@ You can check the desired data structure and also test the functionality of the 
 
 If you are a researcher planning to design a new study, you can calculate the updated design efficiency (A-Efficiency and D-Efficiency) of the cumulative literature after adding your study.
 
-You can upload your data in the web application below and after identifying the `correlation` and `year` variables, click on the `Enter New Study Design` button. This will give you with drop downs to chose the characteristics of your new proposed study design. Subsequently, when you click `Run Analysis`, the output will show the design efficiencies before and after adding the new proposed study design.
+You can upload your data in the web application below and after identifying the `correlation` and `year` variables, click on the `Enter New Study Design` button. The application will then provide you with drop downs to chose the characteristics of your new proposed study design. Subsequently, when you click `Run Analysis`, the output will show the design efficiencies before and after adding the new proposed study design.
 
 
 ### Web Application
