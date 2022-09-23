@@ -35,6 +35,17 @@ You can check the desired data structure and also test the functionality of the 
 <iframe src="https://bestnextstudy.shinyapps.io/BestNextStudy_Shiny_Eff_Cal/" class="l-screen-inset shaded" height="500px"  width="80%"  frameborder="no" ></iframe>
 
 
+## Calculating the Design Efficiency (A-Efficiency and D-Efficiency) After Adding a New Proposed Study Design
+
+If you are a researcher planning to design a new study, you can calculate the updated design efficiency (A-Efficiency and D-Efficiency) of the cumulative literature after adding your study.
+
+You can upload your data in the web application below and after identifying the `correlation` and `year` variables, click on the `Enter New Study Design` button. This will give you with drop downs to chose the characteristics of your new proposed study design. Subsequently, when you click `Run Analysis`, the output will show the design efficiencies before and after adding the new proposed study design.
+
+
+### Web Application
+<iframe src="https://bestnextstudy.shinyapps.io/Efficiency_Cal_Adding_One/" class="l-screen-inset shaded" height="500px"  width="80%"  frameborder="no" ></iframe>
+
+
 ## Identifying the Next Best Studies Based on Design Efficiency
 
 You can upload your data and the number of next studies you want to calculate in the web application below and get the design characteristics of the studies and corresponding A- and D-efficiency by sequentially adding these studies.
