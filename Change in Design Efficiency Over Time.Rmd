@@ -14,8 +14,11 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 # Change in Design Efficiency (A-Efficiency and D-Efficiency) Over Time
 
-This application provides an opportunity to take a look back at the literature and understand how it evolved over time. We group the studies at different time intervals and calculate the A-efficiency and D-efficiency. We can also calculate the optimal efficiencies which are the  efficiencies if we developed the studies following the `BestNextStudy` approach.
+### Description
 
+This application provides a snapshot of temporal patterns in design efficiency over time. You can group the literature at different time intervals and calculate the design efficiency (true efficiency). The application also outputs an optimal efficiency which is the maximum possible efficiency that could have been achieved if the subsequent set of studies have been designed to maximize the efficiency.
+
+### Data Input Needed
 
 You can upload your data and the multiple years you want to group the studies at in the web application below and get the true and optimal A- and D-efficiencies. The program also outputs a graph plotting these efficiencies.
 
@@ -26,7 +29,9 @@ The data should have the following characteristics
    - have a column specifying the correlation of the association being studied ("Corr" in the sample data)
    - all other columns in the data should be the study design factors
 
-You can check the desired data structure and also test the functionality of the application using sample data available to download ***[here]***(data/Efficiency_Best_Next_Studies_Sample_Data_081522.csv){target="_blank"}.
+***Sample Data***
+
+You can check the desired data structure and also test the functionality of the application using sample data available to download [***here***](data/Efficiency_Best_Next_Studies_Sample_Data_081522.csv){target="_blank"}.
 
 You need to identify the names of the `year` variable, which is "Year" in the sample data, and `correlation` variable,which is "Corr" in the sample data, in your data in the web application below.
 

@@ -2475,7 +2475,6 @@ Online Apps
 <a href="Calculating-the-Design-Efficiency-After-Adding-a-New-Proposed-Study-Design.html">Design Efficiency After Adding a New Proposed Study Design</a>
 <a href="Identifying-the-Next-Best-Studies-Based-on-Design-Efficiency.html">Next Best Studies Based on Design Efficiency</a>
 <a href="Change-in-Design-Efficiency-Over-Time.html">Change in Design Efficiency Over Time</a>
-<a href="Application_CS_Retention.html">Application of the R Package</a>
 </div>
 </div>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
@@ -2499,7 +2498,10 @@ Online Apps
  
 </p>
 <h1 id="identifying-the-next-best-studies-based-on-design-efficiency">Identifying the Next Best Studies Based on Design Efficiency</h1>
-<p>The <code>BestNextStudy</code> approach allows you indentify a set of next best studies which when done sequentially will improve the efficiency of the literature on a specific relationship. You can upload your data and the number of next studies you want to calculate in the web application below and get the design characteristics of the studies and corresponding A- and D-efficiency by sequentially adding these studies.</p>
+<h3 id="description">Description</h3>
+<p>This application takes the meta-analysis data studying the association between two focal constructs and returns the design characteristics of a set of next best studies which when done sequentially will improve the efficiency of the literature.</p>
+<h3 id="data-input-needed">Data Input Needed</h3>
+<p>You can upload your data and the number of next studies you want to calculate in the web application below and get the design characteristics of the studies and corresponding A- and D-efficiency by sequentially adding these studies.</p>
 <p>The data should have the following characteristics</p>
 <ul>
 <li>be a <code>.csv</code> file</li>
@@ -2507,7 +2509,8 @@ Online Apps
 <li>have a column specifying the correlation of the association being studied (“Corr” in the sample data)</li>
 <li>all other columns in the data should be the study design factors</li>
 </ul>
-<p>You can check the desired data structure and also test the functionality of the application using sample data available to download <a href="data/Efficiency_Best_Next_Studies_Sample_Data_081522.csv" target="_blank">here</a>.</p>
+<p><strong><em>Sample Data</em></strong></p>
+<p>You can check the desired data structure and also test the functionality of the application using sample data available to download <a href="data/Efficiency_Best_Next_Studies_Sample_Data_081522.csv" target="_blank"><strong><em>here</em></strong></a>.</p>
 <p>You need to identify the names of the <code>year</code> variable, which is “Year” in the sample data, and <code>correlation</code> variable,which is “Corr” in the sample data, in your data in the web application below.</p>
 <p><strong><em>Note</em></strong></p>
 <pre><code>- Given the computational complexity of this analysis, the code will take some time to compile.</code></pre>

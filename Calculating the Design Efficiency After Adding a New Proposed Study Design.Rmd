@@ -16,6 +16,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Calculating the Design Efficiency (A-Efficiency and D-Efficiency) After Adding a New Proposed Study Design
 
+### Description
+
+This application takes the meta-analysis data studying the association between two focal constructs and gives you an option to select the study characteristics of the new proposed study. Subsequently, the application design efficiencies before and after adding the new study to the extant literature.
+
+### Data Input Needed
 If you are a researcher planning to design a new study, you can calculate the updated design efficiency (A-Efficiency and D-Efficiency) of the cumulative literature after adding your study.
 
 You can upload your data in the web application below and after identifying the `correlation` ("Corr" in the sample data) and `year` ("Year" in the sample data) variables, click on the `Enter New Study Design` button. The application will then provide you with drop downs to chose the characteristics of your new proposed study design. Subsequently, when you click `Run Analysis`, the output will show the design efficiencies before and after adding the new proposed study design.
@@ -27,7 +32,9 @@ The data should have the following characteristics
    - have a column specifying the correlation of the association being studied ("Corr" in the sample data)
    - all other columns in the data should be the study design factors
 
-You can check the desired data structure and also test the functionality of the application using sample data available to download [here](data/Efficiency_Best_Next_Studies_Sample_Data_081522.csv){target="_blank"}.
+***Sample Data***
+
+You can check the desired data structure and also test the functionality of the application using sample data available to download [***here***](data/Efficiency_Best_Next_Studies_Sample_Data_081522.csv){target="_blank"}.
 
 You need to identify the names of the `year` variable, which is "Year" in the sample data, and `correlation` variable,which is "Corr" in the sample data, in your data in the web application below.
 

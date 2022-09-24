@@ -7,7 +7,6 @@ output: distill::distill_article
 
 ---
 <p>&nbsp;</p> 
-<p>&nbsp;</p> 
 
 Synthesizing extant literature on a topic for setting the direction of future research is critical for knowledge building. Scholars across different disciplines have used different approaches to synthesizing and summarizing extant literature can be broadly classified into qualitative synthesis and quantitative synthesis approaches.
 
@@ -52,7 +51,7 @@ In order to help researchers with addressing the above mentioned goals, we devel
   </tr>
   <tr>
     <td class="tg-btxf">[Identifying the Next Best Studies Based on Design Efficiency](Identifying-the-Next-Best-Studies-Based-on-Design-Efficiency.html)</td>
-    <td class="tg-btxf">This application takes the meta-analysis data studying the association between two focal constructs and returns the design characteristics of the best-next studies that would improve the efficiency of the cumulative literature&nbsp;&nbsp;</td>
+    <td class="tg-btxf">This application takes the meta-analysis data studying the association between two focal constructs and returns the design characteristics of a set of next best studies which when done sequentially will improve the efficiency of the literature.</td>
   </tr>
   <tr>
     <td class="tg-0pky">[Change in Design Efficiency (A-Efficiency and D-Efficiency) Over Time](Change-in-Design-Efficiency-Over-Time.html)</td>
@@ -76,35 +75,9 @@ The sample data has *30 observations* representing 30 different studies examinin
     - `Retention_Measure`: 2 levels - Behavior; Intention
  - `Corr`: Correlation between *Customer Satisfaction - Retention*
 
-If you want to run these analyses on your own instead of using the web application, we developed a **R package** titled `BestNextStudy` which is available on [GitHub](https://github.com/bestnextstudy/bestnextstudy){target="_blank"}  and can be installed to your local computer by running the following lines of code.
-
-The [application](Application_CS_Retention.html){target="_blank"} page demonstrates the use of BestNextStudy package to understand the association between Customer Satisfaction and Retention using sample data included in the package.
-
-```{r echo=FALSE, include=TRUE}
-library(knitr)
-opts_chunk$set(tidy.opts=list(width.cutoff=60),tidy=TRUE)
-```
-
-```{r klippy, echo=FALSE, include=TRUE}
-klippy::klippy()
-```
-
-```{r load_packages , warning=FALSE , message = FALSE, class.source='klippy'}
-
-# Installing `devtools` package if not alredy installed
-if(!require(devtools)){
-    install.packages("devtools")
-    library(devtools)
-}
-
-#Installing `bestnextstudy` package
-devtools::install_github("bestnextstudy/bestnextstudy")
-library(bestnextstudy)
-```
-
 <p>&nbsp;</p> 
 
-```{r setup, include=FALSE}
+```{r setup_1, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
