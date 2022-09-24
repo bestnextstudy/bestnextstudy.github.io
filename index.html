@@ -2183,6 +2183,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   }
 
   /*-- ARTICLE METADATA --*/
+
+  d-article {
+  grid-template-columns: [screen-start] 1fr [text-start kicker-end] 2% 2% 2% 2% 2% 2% 2% 2% [text-end gutter-start] 2% [middle-end] 2% [page-end gutter-end] 1fr [screen-end];
+  grid-column-gap: 10%;
+  }
+
   d-byline {
     --heading-size:    0.9rem;                      /* edited */
     --heading-color:   rgba(0, 0, 0, 0.5);
@@ -2462,8 +2468,20 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <div class="nav-right">
 <a href="index.html">Home</a>
-<a href="Application_CS_Retention.html">Application</a>
-<a href="Web_Application.html">Online Apps</a>
+<div class="nav-dropdown">
+<button class="nav-dropbtn">
+Online Apps
+ 
+<span class="down-arrow">&#x25BE;</span>
+</button>
+<div class="nav-dropdown-content">
+<a href="Calculating-the-Design-Efficiency.html">Calculating the Design Efficiency</a>
+<a href="Calculating-the-Design-Efficiency-After-Adding-a-New-Proposed-Study-Design.html">Design Efficiency After Adding a New Proposed Study Design</a>
+<a href="Identifying-the-Next-Best-Studies-Based-on-Design-Efficiency.html">Next Best Studies Based on Design Efficiency</a>
+<a href="Change-in-Design-Efficiency-Over-Time.html">Change in Design Efficiency Over Time</a>
+<a href="Application_CS_Retention.html">Application of the R Package</a>
+</div>
+</div>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
 </div>
 </nav>
@@ -2487,17 +2505,88 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>
  
 </p>
-<center>
-<img src="images/logo.png" style="width:20%">
-</center>
-<p>The R package <code>BestNextStudy</code> brings a friendly syntax to study</p>
+<p>Synthesizing extant literature on a topic for setting the direction of future research is critical for knowledge building. Scholars across different disciplines have used different approaches to synthesizing and summarizing extant literature can be broadly classified into qualitative synthesis and quantitative synthesis approaches.</p>
+<p>A meta-analysis, which falls at the quantitative end of the spectrum, enables scholars to aggregate, summarize, scrutinize, and analyze empirical estimates to arrive at more generalizable conclusions than those obtainable from any single study or from a qualitative review. Yet, existing meta-analytic methodologies are silent on ways for improving the precision of these estimates (by reducing their variance) through future studies.</p>
+<p>The <code>BestNextStudy</code> approach we propose helps to</p>
+<ol type="1">
+<li><p>quantify how well have extant studies collectively contributed to our understanding of the focal association being studied in a meta-analysis at a given point in time</p></li>
+<li><p>study how has our understanding of the focal association being studied in a meta-analysis evolved over time</p></li>
+<li><p>what should be the optimal next study to further our understanding of the focal association being studied in a meta-analysis</p></li>
+</ol>
+<p>In order to help researchers with addressing the above mentioned goals, we developed the following set of web applications. One can access the applications by clicking on the links in the table below.</p>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-color:#ccc;border-spacing:0;}
+.tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333;
+  font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333;
+  font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
+.tg .tg-btxf{background-color:#f9f9f9;border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<thead>
+<tr>
+<th class="tg-amwm">
+Web Application
+</th>
+<th class="tg-amwm">
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tg-btxf">
+<a href="Calculating-the-Design-Efficiency.html">Calculating the Design Efficiency (A-Efficiency and D-Efficiency)</a>
+</td>
+<td class="tg-btxf">
+This application takes the meta-analysis data studying the association between two focal constructs and returns the A-Efficiency and D-Efficiency that captures the extent to which extant studies collectively contributed to our understanding of the focal association.
+</td>
+</tr>
+<tr>
+<td class="tg-0pky">
+<a href="Calculating-the-Design-Efficiency-After-Adding-a-New-Proposed-Study-Design.html">Calculating the Design Efficiency (A-Efficiency and D-Efficiency) After Adding a New Proposed Study Design</a>
+</td>
+<td class="tg-0pky">
+This application takes the meta-analysis data studying the association between two focal constructs and gives you an option to select the study characteristics of the new proposed study. Subsequently, the application design efficiencies before and after adding the new study to the extant literature.
+</td>
+</tr>
+<tr>
+<td class="tg-btxf">
+<a href="Identifying-the-Next-Best-Studies-Based-on-Design-Efficiency.html">Identifying the Next Best Studies Based on Design Efficiency</a>
+</td>
+<td class="tg-btxf">
+This application takes the meta-analysis data studying the association between two focal constructs and returns the design characteristics of the best-next studies that would improve the efficiency of the cumulative literature  
+</td>
+</tr>
+<tr>
+<td class="tg-0pky">
+<a href="Change-in-Design-Efficiency-Over-Time.html">Change in Design Efficiency (A-Efficiency and D-Efficiency) Over Time</a>
+</td>
+<td class="tg-0pky">
+This application provides a snapshot of temporal patterns in design efficiency over time. You can group the literature at different time intervals and calculate the design efficiency (true efficiency). The application also outputs an optimal efficiency which is the maximum possible efficiency that could have been achieved if the subsequent set of studies have been designed to maximize the efficiency.
+</td>
+</tr>
+</tbody>
+</table>
+<p>You can check the desired data structure and also test the functionality of the application using sample data available to download <a href="data/Efficiency_Best_Next_Studies_Sample_Data_081522.csv" target="_blank">here</a>.</p>
+<p>The sample data has <em>30 observations</em> representing 30 different studies examining the <strong>Customer Satisfaction - Retention</strong> relationship and the following variables.</p>
 <ul>
-<li>how well have extant studies collectively contributed to our understanding of the focal association being studied in a meta-analysis at a given point in time</li>
-<li>how has our understanding of the focal association being studied in a meta-analysis evolved over time</li>
-<li>what should be the optimal next study to further our understanding of the focal association being studied in a meta-analysis</li>
+<li><code>Year</code>: Year the study is published</li>
+<li>Study Moderators:Contextual characteristics
+<ul>
+<li><code>Exchange</code>: 3 levels - Goods; Services; Mixed</li>
+<li><code>Market</code>: 3 levels - B2B; B2C; Mixed</li>
+<li><code>Location</code>: 3 levels - North America; Europe; Asia</li>
+<li><code>CS_Scale_Items</code>: 2 levels - Single Item; Multiple Items</li>
+<li><code>CS_Scale_Points</code>: 3 levels - 5; 7; 10</li>
+<li><code>Retention_Measure</code>: 2 levels - Behavior; Intention</li>
+</ul></li>
+<li><code>Corr</code>: Correlation between <em>Customer Satisfaction - Retention</em></li>
 </ul>
-<p>The <a href="Application_CS_Retention.html">application</a> page demonstrates the use of <code>BestNextStudy</code> package to understand the association between Customer Satisfaction and Retention using sample data included in the package.</p>
-<p>The package is available on <a href="https://github.com/bestnextstudy/bestnextstudy" target="_blank">GitHub</a> and can be installed to your local computer by running the following lines of code.</p>
+<p>If you want to run these analyses on your own instead of using the web application, we developed a <strong>R package</strong> titled <code>BestNextStudy</code> which is available on <a href="https://github.com/bestnextstudy/bestnextstudy" target="_blank">GitHub</a> and can be installed to your local computer by running the following lines of code.</p>
+<p>The <a href="Application_CS_Retention.html" target="_blank">application</a> page demonstrates the use of BestNextStudy package to understand the association between Customer Satisfaction and Retention using sample data included in the package.</p>
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
@@ -2510,20 +2599,16 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Installing `devtools` package if not alredy installed</span></span>
-<span><span class='kw'>if</span><span class='op'>(</span><span class='op'>!</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='va'><a href='https://devtools.r-lib.org/'>devtools</a></span><span class='op'>)</span><span class='op'>)</span><span class='op'>{</span></span>
+<span><span class='kw'>if</span> <span class='op'>(</span><span class='op'>!</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='va'><a href='https://devtools.r-lib.org/'>devtools</a></span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span></span>
 <span>    <span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='st'>"devtools"</span><span class='op'>)</span></span>
 <span>    <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://devtools.r-lib.org/'>devtools</a></span><span class='op'>)</span></span>
 <span><span class='op'>}</span></span>
 <span></span>
-<span><span class='co'>#Installing `bestnextstudy` package</span></span>
+<span><span class='co'># Installing `bestnextstudy` package</span></span>
 <span><span class='fu'>devtools</span><span class='fu'>::</span><span class='fu'><a href='https://remotes.r-lib.org/reference/install_github.html'>install_github</a></span><span class='op'>(</span><span class='st'>"bestnextstudy/bestnextstudy"</span><span class='op'>)</span></span>
 <span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://bestnextstudy.github.io/'>bestnextstudy</a></span><span class='op'>)</span></span></code></pre>
 </div>
 </div>
-<p>If you are new to <code>R</code>, this <a href="https://bookdown.org/rwnahhas/IntroToR/" target="_blank">link</a> will provide resources to get started with R and R Studio.</p>
-<p>
- 
-</p>
 <p>
  
 </p>

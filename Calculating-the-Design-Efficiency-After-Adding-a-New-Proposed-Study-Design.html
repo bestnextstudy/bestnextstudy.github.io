@@ -88,27 +88,27 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>BestNextStudy: Best Next Study: Web Applications</title>
+  <title>BestNextStudy: Calculating the Design Efficiency (A-Efficiency and D-Efficiency) After Adding a New Proposed Study Design</title>
 
 
   <link rel="icon" type="image/png" href="images/logo.png"/>
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="BestNextStudy: Best Next Study: Web Applications"/>
+  <meta property="og:title" content="BestNextStudy: Calculating the Design Efficiency (A-Efficiency and D-Efficiency) After Adding a New Proposed Study Design"/>
   <meta property="og:type" content="article"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="BestNextStudy"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="BestNextStudy: Best Next Study: Web Applications"/>
+  <meta property="twitter:title" content="BestNextStudy: Calculating the Design Efficiency (A-Efficiency and D-Efficiency) After Adding a New Proposed Study Design"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","output"]}},"value":[{"type":"character","attributes":{},"value":["Best Next Study: Web Applications"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","output"]}},"value":[{"type":"character","attributes":{},"value":["Calculating the Design Efficiency (A-Efficiency and D-Efficiency) After Adding a New Proposed Study Design"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2449,7 +2449,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Best Next Study: Web Applications","authors":[]}
+{"title":"Calculating the Design Efficiency (A-Efficiency and D-Efficiency) After Adding a New Proposed Study Design","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2487,7 +2487,7 @@ Online Apps
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Best Next Study: Web Applications</h1>
+<h1>Calculating the Design Efficiency (A-Efficiency and D-Efficiency) After Adding a New Proposed Study Design</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
 
@@ -2495,46 +2495,37 @@ Online Apps
 
 
 <div class="d-article">
-<p>To make it easier to implement this methodology, we developed a web application which uses the <code>BestNextStudy</code> package and gives you the desired output at the click of a button. You can upload your meta-analysis data and calculate the efficiencies, compare new study designs and come up with a set of next best studies based on A-efficiency and D-efficiency.</p>
-<h2 id="calculating-the-design-efficiency-a-efficiency-and-d-efficiency">Calculating the Design Efficiency (A-Efficiency and D-Efficiency)</h2>
-<p>You can upload your data in the web application below and calculate the A-efficiency and D-efficiency.</p>
+<p>
+ 
+</p>
+<h1 id="calculating-the-design-efficiency-a-efficiency-and-d-efficiency-after-adding-a-new-proposed-study-design">Calculating the Design Efficiency (A-Efficiency and D-Efficiency) After Adding a New Proposed Study Design</h1>
+<p>If you are a researcher planning to design a new study, you can calculate the updated design efficiency (A-Efficiency and D-Efficiency) of the cumulative literature after adding your study.</p>
+<p>You can upload your data in the web application below and after identifying the <code>correlation</code> (“Corr” in the sample data) and <code>year</code> (“Year” in the sample data) variables, click on the <code>Enter New Study Design</code> button. The application will then provide you with drop downs to chose the characteristics of your new proposed study design. Subsequently, when you click <code>Run Analysis</code>, the output will show the design efficiencies before and after adding the new proposed study design.</p>
 <p>The data should have the following characteristics</p>
 <ul>
 <li>be a <code>.csv</code> file</li>
-<li>have a column specifying the year of the studies</li>
-<li>have a column specifying the correlation of the association being studied</li>
+<li>have a column specifying the year of the studies (“Year” in the sample data)</li>
+<li>have a column specifying the correlation of the association being studied (“Corr” in the sample data)</li>
 <li>all other columns in the data should be the study design factors</li>
 </ul>
-<p>You need to identify the names of the <code>year</code> and <code>correlation</code> variables in your data in the web application below.</p>
 <p>You can check the desired data structure and also test the functionality of the application using sample data available to download <a href="data/Efficiency_Best_Next_Studies_Sample_Data_081522.csv" target="_blank">here</a>.</p>
+<p>You need to identify the names of the <code>year</code> variable, which is “Year” in the sample data, and <code>correlation</code> variable,which is “Corr” in the sample data, in your data in the web application below.</p>
+<p>For the sample data, if we add the new study design: <code>Exchange = Mixed</code>; <code>Market = B2B</code>; <code>Location = Europe</code>; <code>CS_Scale_Items = Single Item</code>; <code>CS_Scale_Points = 10</code>; <code>Retention_Measure = Behavior</code>, the A-Efficiency will increase from 28.13 ti 29.32 and the D-Efficiency will increase from 53.45 to 55.42.
+.</p>
 <h3 id="web-application">Web Application</h3>
-<iframe src="https://bestnextstudy.shinyapps.io/BestNextStudy_Shiny_Eff_Cal/" class="l-screen-inset shaded" height="500px" width="80%" frameborder="no">
-</iframe>
-<h2 id="calculating-the-design-efficiency-a-efficiency-and-d-efficiency-after-adding-a-new-proposed-study-design">Calculating the Design Efficiency (A-Efficiency and D-Efficiency) After Adding a New Proposed Study Design</h2>
-<p>If you are a researcher planning to design a new study, you can calculate the updated design efficiency (A-Efficiency and D-Efficiency) of the cumulative literature after adding your study.</p>
-<p>You can upload your data in the web application below and after identifying the <code>correlation</code> and <code>year</code> variables, click on the <code>Enter New Study Design</code> button. The application will then provide you with drop downs to chose the characteristics of your new proposed study design. Subsequently, when you click <code>Run Analysis</code>, the output will show the design efficiencies before and after adding the new proposed study design.</p>
-<h3 id="web-application-1">Web Application</h3>
 <iframe src="https://bestnextstudy.shinyapps.io/Efficiency_Cal_Adding_One/" class="l-screen-inset shaded" height="500px" width="80%" frameborder="no">
 </iframe>
-<h2 id="identifying-the-next-best-studies-based-on-design-efficiency">Identifying the Next Best Studies Based on Design Efficiency</h2>
-<p>You can upload your data and the number of next studies you want to calculate in the web application below and get the design characteristics of the studies and corresponding A- and D-efficiency by sequentially adding these studies.</p>
-<p>The data structure should be same as to the structure discussed in the earlier section and the input for the number of future studies should range between 1 and 15.</p>
-<p><strong><em>Note</em></strong></p>
-<pre><code>- Given the computational complexity of this analysis, the code will take some time to compile.</code></pre>
-<h3 id="web-application-2">Web Application</h3>
-<iframe src="https://bestnextstudy.shinyapps.io/Next_Best_Study_Calculation/" class="l-screen-inset shaded" height="800px" width="80%" frameborder="no">
-</iframe>
-<h2 id="change-in-design-efficiency-over-time">Change in Design Efficiency Over Time</h2>
-<p>This methodology provides an opportunity to take a look back at the literature and understand how it evolved over time. We group the studies at different time intervals and calculate the A-efficiency and D-efficiency. We can also calculate the optimal efficiencies which are the efficiencies if we developed the studies following the <code>BestNextStudy</code> approach.</p>
-<p>You can upload your data and the multiple years you want to group the studies at in the web application below and get the true and optimal A- and D-efficiencies. The program also outputs a graph plotting these efficiencies.</p>
-<p>The data structure should be same as to the structure discussed in the earlier section and the input for the year should range between the minimum and maximum year value in your data.</p>
-<p><strong><em>Note</em></strong></p>
-<pre><code>  - Select the years in an ascending order.
-  - Given the computational complexity of this analysis, the code will take some time to compile.</code></pre>
-<h3 id="web-application-3">Web Application</h3>
-<iframe src="https://bestnextstudy.shinyapps.io/Over_Time_Analysis/?_ga=2.145709110.301097831.1663710238-1483218729.1663710238" class="l-screen-inset shaded" height="800px" width="80%" frameborder="no">
-</iframe>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>
+ 
+</p>
+<div class="layout-chunk" data-layout="l-body">
+<style type="text/css">
+d-title {
+    display: none;
+  }
+</style>
+</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

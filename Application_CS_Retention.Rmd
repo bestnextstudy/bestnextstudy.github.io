@@ -3,11 +3,9 @@ title: 'Best Next Study: A Case of Customer Satifaction and Retention'
 
 output:
   distill::distill_article:
-    toc: true
-    toc_depth: 2
+    toc: false
     highlight: pygments
     highlight_downlit: false
-    toc_float: true
     #theme: readable 
 
 ---
