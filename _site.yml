@@ -16,7 +16,7 @@ navbar:
           href: Calculating-the-Design-Efficiency.html
         - text: "Design Efficiency After Adding a New Proposed Study Design"
           href: Calculating-the-Design-Efficiency-After-Adding-a-New-Proposed-Study-Design.html
-        - text: "Next Best Studies Based on Design Efficiency"
+        - text: "Best Next Studies Based on Design Efficiency"
           href: Identifying-the-Next-Best-Studies-Based-on-Design-Efficiency.html
         - text: "Change in Design Efficiency Over Time"
           href: Change-in-Design-Efficiency-Over-Time.html

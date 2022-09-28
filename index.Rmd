@@ -18,7 +18,7 @@ The `BestNextStudy` approach we propose helps to
 
   2. study how has our understanding of the focal association being studied in a meta-analysis evolved over time
 
-  3. what should be the optimal next study to further our understanding of the focal association being studied in a meta-analysis
+  3. what should be the optimal best next study to further our understanding of the focal association being studied in a meta-analysis
 
 
 In order to help researchers with addressing the above mentioned goals, we developed the following set of web applications. One can access the applications by clicking on the links in the table below.
@@ -50,8 +50,8 @@ In order to help researchers with addressing the above mentioned goals, we devel
     <td class="tg-0pky">This application takes the meta-analysis data studying the association between two focal constructs and gives you an option to select the study characteristics of the new proposed study. Subsequently, the application design efficiencies before and after adding the new study to the extant literature.</td>
   </tr>
   <tr>
-    <td class="tg-btxf">[Identifying the Next Best Studies Based on Design Efficiency](Identifying-the-Next-Best-Studies-Based-on-Design-Efficiency.html)</td>
-    <td class="tg-btxf">This application takes the meta-analysis data studying the association between two focal constructs and returns the design characteristics of a set of next best studies which when done sequentially will improve the efficiency of the literature.</td>
+    <td class="tg-btxf">[Identifying the Best Next Studies Based on Design Efficiency](Identifying-the-Next-Best-Studies-Based-on-Design-Efficiency.html)</td>
+    <td class="tg-btxf">This application takes the meta-analysis data studying the association between two focal constructs and returns the design characteristics of a set of best next studies which when done sequentially will improve the efficiency of the literature.</td>
   </tr>
   <tr>
     <td class="tg-0pky">[Change in Design Efficiency (A-Efficiency and D-Efficiency) Over Time](Change-in-Design-Efficiency-Over-Time.html)</td>
@@ -85,4 +85,13 @@ knitr::opts_chunk$set(echo = FALSE)
 d-title {
     display: none;
   }
+  
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
+</head>
 ```

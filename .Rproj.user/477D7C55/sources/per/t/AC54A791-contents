@@ -1,0 +1,28 @@
+name: "bestnextstudy.github.io"
+title: "BestNextStudy"
+favicon: images/logo.png
+base_url: https://www.bestnextstudy.github.io
+output_dir: "."
+navbar:
+  logo:
+    image: images/logo.png
+    href: https://bestnextstudy.github.io/
+  right:
+    - text: "Home"
+      href: index.html
+    - text: "Online Apps"
+      menu:
+        - text: "Calculating the Design Efficiency"
+          href: Calculating-the-Design-Efficiency.html
+        - text: "Design Efficiency After Adding a New Proposed Study Design"
+          href: Calculating-the-Design-Efficiency-After-Adding-a-New-Proposed-Study-Design.html
+        - text: "Best Next Studies Based on Design Efficiency"
+          href: Identifying-the-Next-Best-Studies-Based-on-Design-Efficiency.html
+        - text: "Change in Design Efficiency Over Time"
+          href: Change-in-Design-Efficiency-Over-Time.html
+
+
+output: distill::distill_article
+#theme: flatly
+theme: best.css
+
