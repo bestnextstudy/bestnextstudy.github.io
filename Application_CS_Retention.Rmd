@@ -1,0 +1,214 @@
+---
+title: 'Best Next Study: A Case of Customer Satifaction and Retention'
+
+output:
+  distill::distill_article:
+    toc: false
+    highlight: pygments
+    highlight_downlit: false
+    #theme: readable 
+
+---
+
+```{r clear_data , echo=FALSE , warning=FALSE , message = FALSE, results = "hide"}
+ rm(list=ls())
+```
+
+```{r ,echo=FALSE , warning=FALSE , message = FALSE, results = "hide"}
+library(knitr)
+knitr::opts_chunk$set(R.options = list(width = 60))
+```
+
+```{r klippy, echo=FALSE, include=TRUE}
+klippy::klippy()
+```
+
+In this page, we explore an application of the R package `BestNextStudy` to identify next best studies based on a meta analysis of relationship between Customer Satisfaction and Retention using the R package `BestNextStudy` 
+
+For this example, we use the Customer Satisfaction Dataset (`customer_satisfaction_data`) included in the R package.
+
+
+
+## Load Required Packages
+
+We begin by installing the package and loading the library.
+
+```{r load_packages , warning=FALSE , message = FALSE, }
+
+  suppressPackageStartupMessages({
+    require(devtools)  #to load the package from Github
+    require(dplyr)#for better manipulating data
+    require(Hmisc)#for data description
+    require(plyr)
+
+
+  })
+devtools::install_github("bestnextstudy/bestnextstudy")
+library(bestnextstudy)
+```
+
+## Load Data from `BestNextStudy` Package and Reorder Factor Levels
+
+In this section we load the data from the package and reorder factor levels. To replicate the same analysis on a different dataset, you can load the specific data as a csv or excel file into R.
+
+The dataset `customer_satisfaction_data` has *30 observations* representing 30 different studies examining the **Customer Satisfaction - Retention** relationship and the following variables.
+ 
+ - `Year`: Year the study is published
+ - Study Moderators:Contextual characteristics
+    - `Exchange`: 3 levels - Goods; Services; Mixed
+    - `Market`: 3 levels - B2B; B2C; Mixed
+    - `Location`: 3 levels - North America; Europe; Asia
+    - `CS_Scale_Items`: 2 levels - Single Item; Multiple Items
+    - `CS_Scale_Points`: 3 levels - 5; 7; 10
+    - `Retention_Measure`: 2 levels - Behavior; Intention
+ - `Corr`: Correlation between *Customer Satisfaction - Retention*
+    
+```{r load_data ,  warning=FALSE , message = FALSE, }
+#customer_satisfaction_data is pre-built into the package
+data = bestnextstudy::customer_satisfaction_data
+###REORDER FACTOR LEVELS
+data$Exchange <- factor(data$Exchange, levels = c("Goods", "Services", "Mixed"))
+data$Market <- factor(data$Market, levels = c("B2C", "B2B", "Mixed"))
+data$Location <- factor(data$Location, levels = c("North America", "Europe", "Asia"))
+data$CS_Scale_Items <- factor(data$CS_Scale_Items, levels = c("Single Item", "Multiple Items"))
+data$CS_Scale_Points <- factor(data$CS_Scale_Points, levels = c("5", "7", "10"))
+```
+
+## Data Description
+
+We can check the data summary by using `describe()` function from the `Hmisc` package.
+
+```{r describe_data ,  warning=FALSE , message = FALSE, }
+library(Hmisc)
+
+Hmisc::describe(data)
+
+```
+
+
+## Calculating A-Efficiency and D-Efficiency
+
+We can calculate the *A-Efficiency* and *D-Efficiency* by using the `efficiency` function from the `bestnextstudy` package.
+
+```{r efficiency_1 , warning=FALSE , message = FALSE, }
+# Names of the variables to be included as moderators while calculating the efficiency
+variables =  c("Exchange", "Market", "Location", "CS_Scale_Items", "CS_Scale_Points", "Retention_Measure")
+
+# Labels corresponding to the variables included
+labels = c("Exchange", "Market", "Location", "CS_Scale_Items", "CS_Scale_Points", "Retention_Measure")
+
+# Identifying the variable which represents the Correlation 
+corrvar = "Corr"
+
+# Calculating the Efficiency
+eff = bestnextstudy::efficiency(data = data, variables = variables, labels = labels, corrvar = corrvar)
+
+#Display the Efficiency
+eff
+```
+
+The output shows that the A-Efficiency for the 30 studies is `28.13088` and D-Efficiency is `53.44657`.
+
+## Change in Efficiency by Adding New Studies   
+
+Researchers working on a new study exploring the relationship between **Customer Satisfaction - Retention** can use this package to calculate the efficiency change by the addition of their new study. They can augment the design factors of their new study to the existing data and calculate the new efficiency.
+
+```{r efficiency_New_study ,  warning=FALSE , message = FALSE}
+# Create example data frame
+new_study <- data.frame(Year = 2022, # Year = Current Year
+                  Exchange = "Mixed", 
+                  Market = "B2B",
+                  Location = "Europe",
+                  CS_Scale_Items = "Single Item",
+                  CS_Scale_Points = "10",
+                  Retention_Measure = "Behavior",
+                  Corr = 0) #Correlation between CS and Retention in the new study assumed to be zero hypothetically
+
+# Combining data from old studies with the new hypothetical study
+combined_data <- rbind.fill(data,new_study)
+
+# Calculating the New Efficiency
+eff_new = bestnextstudy::efficiency(data = combined_data, variables = variables, labels = labels, corrvar = corrvar)
+
+#Display the New Efficiency
+eff_new
+```
+
+## Calculating True Efficiency and Optimal Efficiency Over Time
+
+
+The following graph shows the efficiency of studies examining the association between CS and retention over time. Specifically,the A-efficiency of all the studies till 2005 is 33.33 and the D-efficiency is 60.63. Additional studies got added to the literature between 2005 and 2008 changing the cumulative A-efficiency and D-efficiency of studies till 2008 to 8.41 and 40.74 respectively. However, if the studies between 2005 and 2008 were added sequentially using the `BestNextStudies` approach with design efficiency as the guiding principle, the A-efficiency would have gone up from 33.33 in 2005 to 92.89 in 2008 and the D-efficiency would have gone up from 60.63 in 2005 to 96.69 in 2008. We call the new hypothetical efficiency as the optimal efficiency.
+
+```{r efficiency_2 ,  warning=FALSE , message = FALSE, results = "hide"}
+
+
+naval = "Don't Know"
+yrvar = "Year"
+
+yrs = c(2005, 2008, 2011, 2014, 2017, 2019)
+
+
+##RUN
+eff_over_time = bestnextstudy::efficiency_over_time(data = data, 
+                                                    variables = variables, 
+                                                    labels = labels, 
+                                                    corrvar = corrvar, 
+                                                    naval = naval, 
+                                                    yrvar = yrvar, 
+                                                    yrs = yrs)
+```
+
+### Plotting the true and optimal efficiencis over time
+```{r efficiency_2_plot ,  warning=FALSE , message = FALSE}
+# 'eff_over_time' is the output from bestnextstudy::efficiency_over_time
+bestnextstudy::efficiency_over_time_plot(eff_over_time)
+
+```
+
+## Identifying 10 Next Best Studies
+
+```{r efficiency_Next_Best , warning=FALSE , message = FALSE,results = "hide"}
+nstudies_add = 10 #number of next studies
+eff_next_best = bestnextstudy::efficiency_next_best_studies(data = data, 
+                                                            variables = variables, 
+                                                            labels = labels, 
+                                                            corrvar = corrvar, 
+                                                            naval = naval, 
+                                                            nstudies_add = nstudies_add)
+```
+
+### 10 Studies Based on A-Efficiency are
+```{r efficiency_Next_Best_A,  warning=FALSE , message = FALSE}
+eff_next_best_A = as.data.frame(eff_next_best$next_best_studies_A) #best next studies based on a-efficiency
+
+ 
+```
+
+```{r efficiency_Next_Best_A_print, echo= FALSE,  warning=FALSE , message = FALSE}
+#options(knitr.kable.NA = '')
+require(kableExtra)
+ library(dplyr)
+library(kableExtra)
+eff_next_best_A %>%
+  kbl(caption = NULL) %>%
+  kable_classic(full_width = F, html_font = "Cambria") %>%
+  kable_styling(bootstrap_options = "striped", full_width = F, position = "center")
+```
+
+
+### 10 Studies Based on D-Efficiency are
+```{r efficiency_Next_Best_D, warning=FALSE , message = FALSE}
+
+eff_next_best_D = as.data.frame(eff_next_best$next_best_studies_D) #best next studies based on a-efficiency
+
+```
+
+```{r efficiency_Next_Best_D_print, echo= FALSE , warning=FALSE , message = FALSE}
+#options(knitr.kable.NA = '')
+
+eff_next_best_D %>%
+  kbl(caption = NULL) %>%
+  kable_classic(full_width = F, html_font = "Cambria") %>%
+  kable_styling(bootstrap_options = "striped", full_width = F, position = "center")
+```
+

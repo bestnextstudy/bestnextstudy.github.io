@@ -1,0 +1,58 @@
+---
+title: 'Change in Design Efficiency (A-Efficiency and D-Efficiency) Over Time'
+
+output:
+  distill::distill_article:
+    self_contained: true
+    #theme: readable 
+
+---
+<p>&nbsp;</p> 
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+# Change in Design Efficiency (A-Efficiency and D-Efficiency) Over Time
+
+### Description
+
+This application provides a snapshot of temporal patterns in design efficiency over time. You can group the literature at different time intervals and calculate the design efficiency (true efficiency). The application also outputs an optimal efficiency which is the maximum possible efficiency that could have been achieved if the subsequent set of studies have been designed to maximize the efficiency.
+
+### Data Input Needed
+
+You can upload your data and the multiple years you want to group the studies at in the web application below and get the true and optimal A- and D-efficiencies. The program also outputs a graph plotting these efficiencies.
+
+The data should have the following characteristics
+
+   - be a `.csv` file
+   - have a column specifying the year of the studies ("Year" in the sample data)
+   - have a column specifying the correlation of the association being studied ("Corr" in the sample data)
+   - all other columns in the data should be the study design factors
+
+***Sample Data***
+
+You can check the desired data structure and also test the functionality of the application using sample data available to download [***here***](data/Efficiency_Best_Next_Studies_Sample_Data_081522.csv){target="_blank"}.
+
+You need to identify the names of the `year` variable, which is "Year" in the sample data, and `correlation` variable,which is "Corr" in the sample data, in your data in the web application below.
+
+***Note***
+
+      - Select the years in an ascending order.
+      - Given the computational complexity of this analysis, the code will take some time to compile.
+  
+### Web Application
+
+<iframe src="https://bestnextstudy.shinyapps.io/Over_Time_Analysis/?_ga=2.145709110.301097831.1663710238-1483218729.1663710238" class="l-screen-inset shaded" height="800px"  width="80%"  frameborder="no" ></iframe>
+
+
+<p>&nbsp;</p> 
+
+```{r setup_1, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{css}
+d-title {
+    display: none;
+  }
+```

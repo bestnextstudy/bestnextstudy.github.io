@@ -1,0 +1,53 @@
+---
+title: 'Calculating the Design Efficiency (A-Efficiency and D-Efficiency)'
+
+output:
+  distill::distill_article:
+    self_contained: true
+    #theme: readable 
+
+---
+<p>&nbsp;</p> 
+
+# Calculating the Design Efficiency (A-Efficiency and D-Efficiency)
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Description
+This application takes the meta-analysis data studying the association between two focal constructs and returns the A-Efficiency and D-Efficiency that captures the extent to which extant studies collectively contributed to our understanding of the focal association.
+
+### Data Input Needed
+
+You can upload your data in the web application below and calculate the A-efficiency and D-efficiency.
+
+The data should have the following characteristics
+
+   - be a `.csv` file
+   - have a column specifying the year of the studies ("Year" in the sample data)
+   - have a column specifying the correlation of the association being studied ("Corr" in the sample data)
+   - all other columns in the data should be the study design factors
+
+***Sample Data***
+
+You can check the desired data structure and also test the functionality of the application using sample data available to download [***here***](data/Efficiency_Best_Next_Studies_Sample_Data_081522.csv){target="_blank"}.
+
+You need to identify the names of the `year` variable, which is "Year" in the sample data, and `correlation` variable,which is "Corr" in the sample data, in your data in the web application below.
+
+For the sample data, the A-Efficiency of the 30 studies examining the correlation between Customer Satisfaction - Retention is 28.13 and the D-Efficiency is 53.15. 
+
+### Web Application
+
+<iframe src="https://bestnextstudy.shinyapps.io/BestNextStudy_Shiny_Eff_Cal/" class="l-screen-inset shaded" height="500px"  width="80%"  frameborder="no" ></iframe>
+
+<p>&nbsp;</p> 
+
+```{r setup_1, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{css}
+d-title {
+    display: none;
+  }
+```

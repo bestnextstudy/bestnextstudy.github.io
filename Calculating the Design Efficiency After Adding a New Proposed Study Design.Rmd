@@ -1,0 +1,57 @@
+---
+title: 'Calculating the Design Efficiency (A-Efficiency and D-Efficiency) After Adding a New Proposed Study Design'
+
+output:
+  distill::distill_article:
+    self_contained: true
+    #theme: readable 
+
+---
+<p>&nbsp;</p> 
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Calculating the Design Efficiency (A-Efficiency and D-Efficiency) After Adding a New Proposed Study Design
+
+### Description
+
+This application takes the meta-analysis data studying the association between two focal constructs and gives you an option to select the study characteristics of the new proposed study. Subsequently, the application design efficiencies before and after adding the new study to the extant literature.
+
+### Data Input Needed
+If you are a researcher planning to design a new study, you can calculate the updated design efficiency (A-Efficiency and D-Efficiency) of the cumulative literature after adding your study.
+
+You can upload your data in the web application below and after identifying the `correlation` ("Corr" in the sample data) and `year` ("Year" in the sample data) variables, click on the `Enter New Study Design` button. The application will then provide you with drop downs to chose the characteristics of your new proposed study design. Subsequently, when you click `Run Analysis`, the output will show the design efficiencies before and after adding the new proposed study design.
+
+The data should have the following characteristics
+
+   - be a `.csv` file
+   - have a column specifying the year of the studies ("Year" in the sample data)
+   - have a column specifying the correlation of the association being studied ("Corr" in the sample data)
+   - all other columns in the data should be the study design factors
+
+***Sample Data***
+
+You can check the desired data structure and also test the functionality of the application using sample data available to download [***here***](data/Efficiency_Best_Next_Studies_Sample_Data_081522.csv){target="_blank"}.
+
+You need to identify the names of the `year` variable, which is "Year" in the sample data, and `correlation` variable,which is "Corr" in the sample data, in your data in the web application below.
+
+For the sample data, if we add the new study design: `Exchange = Mixed`; `Market = B2B`; `Location = Europe`; `CS_Scale_Items = Single Item`; `CS_Scale_Points = 10`; `Retention_Measure = Behavior`, the A-Efficiency will increase from 28.13 ti 29.32 and the D-Efficiency will increase from 53.45 to 55.42.
+. 
+
+### Web Application
+<iframe src="https://bestnextstudy.shinyapps.io/Efficiency_Cal_Adding_One/" class="l-screen-inset shaded" height="500px"  width="80%"  frameborder="no" ></iframe>
+
+<p>&nbsp;</p> 
+
+```{r setup_2, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{css}
+d-title {
+    display: none;
+  }
+```

@@ -1,0 +1,97 @@
+---
+title:  "BestNextStudy"
+
+pagetitle: "BestNextStudy"
+output: distill::distill_article
+#site: distill::distill_website
+
+---
+<p>&nbsp;</p> 
+
+Synthesizing extant literature on a topic for setting the direction of future research is critical for knowledge building. Scholars across different disciplines have used different approaches to synthesizing and summarizing extant literature can be broadly classified into qualitative synthesis and quantitative synthesis approaches.
+
+A meta-analysis, which falls at the quantitative end of the spectrum, enables scholars to aggregate, summarize, scrutinize, and analyze empirical estimates to arrive at more generalizable conclusions than those obtainable from any single study or from a qualitative review. Yet, existing meta-analytic methodologies are silent on ways for improving the precision of these estimates (by reducing their variance) through future studies. 
+
+The `BestNextStudy` approach we propose helps to 
+
+  1. quantify how well have extant studies collectively contributed to our understanding of the focal association being studied in a meta-analysis at a given point in time
+
+  2. study how has our understanding of the focal association being studied in a meta-analysis evolved over time
+
+  3. what should be the optimal best next study to further our understanding of the focal association being studied in a meta-analysis
+
+
+In order to help researchers with addressing the above mentioned goals, we developed the following set of web applications. One can access the applications by clicking on the links in the table below.
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-color:#ccc;border-spacing:0;}
+.tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333;
+  font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333;
+  font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
+.tg .tg-btxf{background-color:#f9f9f9;border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-amwm">Web Application</th>
+    <th class="tg-amwm">Description</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-btxf">[Calculating the Design Efficiency (A-Efficiency and D-Efficiency)](Calculating-the-Design-Efficiency.html)</td>
+    <td class="tg-btxf">This application takes the meta-analysis data studying the association between two focal constructs and returns the A-Efficiency and D-Efficiency that captures the extent to which extant studies collectively contributed to our understanding of the focal association.</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">[Calculating the Design Efficiency (A-Efficiency and D-Efficiency) After Adding a New Proposed Study Design](Calculating-the-Design-Efficiency-After-Adding-a-New-Proposed-Study-Design.html)</td>
+    <td class="tg-0pky">This application takes the meta-analysis data studying the association between two focal constructs and gives you an option to select the study characteristics of the new proposed study. Subsequently, the application design efficiencies before and after adding the new study to the extant literature.</td>
+  </tr>
+  <tr>
+    <td class="tg-btxf">[Identifying the Best Next Studies Based on Design Efficiency](Identifying-the-Next-Best-Studies-Based-on-Design-Efficiency.html)</td>
+    <td class="tg-btxf">This application takes the meta-analysis data studying the association between two focal constructs and returns the design characteristics of a set of best next studies which when done sequentially will improve the efficiency of the literature.</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">[Change in Design Efficiency (A-Efficiency and D-Efficiency) Over Time](Change-in-Design-Efficiency-Over-Time.html)</td>
+    <td class="tg-0pky">This application provides a snapshot of temporal patterns in design efficiency over time. You can group the literature at different time intervals and calculate the design efficiency (true efficiency). The application also outputs an optimal efficiency which is the maximum possible efficiency that could have been achieved if the subsequent set of studies have been designed to maximize the efficiency.</td>
+  </tr>
+</tbody>
+</table>
+
+
+You can check the desired data structure and also test the functionality of the application using sample data available to download [here](data/Efficiency_Best_Next_Studies_Sample_Data_081522.csv){target="_blank"}.
+
+The sample data has *30 observations* representing 30 different studies examining the **Customer Satisfaction - Retention** relationship and the following variables.
+ 
+ - `Year`: Year the study is published
+ - Study Moderators:Contextual characteristics
+    - `Exchange`: 3 levels - Goods; Services; Mixed
+    - `Market`: 3 levels - B2B; B2C; Mixed
+    - `Location`: 3 levels - North America; Europe; Asia
+    - `CS_Scale_Items`: 2 levels - Single Item; Multiple Items
+    - `CS_Scale_Points`: 3 levels - 5; 7; 10
+    - `Retention_Measure`: 2 levels - Behavior; Intention
+ - `Corr`: Correlation between *Customer Satisfaction - Retention*
+
+<p>&nbsp;</p> 
+
+```{r setup_1, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{css}
+d-title {
+    display: none;
+  }
+  
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
+</head>
+```
